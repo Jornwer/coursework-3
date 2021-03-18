@@ -3,6 +3,7 @@ package com.jornwer.coursework.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.Instant;
 
 @Data
 @Entity
@@ -21,4 +22,6 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     @Column(name = "status")
     private Status status;
+    @Column(name = "created_date")
+    private Instant createdDate;
 }

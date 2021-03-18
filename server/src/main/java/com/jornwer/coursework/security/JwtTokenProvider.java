@@ -12,8 +12,11 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
+import java.time.Instant;
 import java.util.Base64;
 import java.util.Date;
+
+import static java.util.Date.from;
 
 @Component
 public class JwtTokenProvider {
@@ -70,5 +73,18 @@ public class JwtTokenProvider {
 
     public String resolveToken(HttpServletRequest request) {
         return request.getHeader(authorizationHeader);
+    }
+
+    public String generateTokenWithUserName(String username) {
+        return Jwts.builder()
+            .setSubject(username)
+            .setIssuedAt(from(Instant.now()))
+            .signWith(SignatureAlgorithm.HS256, secretKey)
+            .setExpiration(java.sql.Date.from(Instant.now().plusMillis(validityInMilliseconds * 1000)))
+            .compact();
+    }
+
+    public long getValidityInMilliseconds() {
+        return validityInMilliseconds;
     }
 }
