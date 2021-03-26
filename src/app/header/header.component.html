@@ -1,1 +1,18 @@
-<p>header works!</p>
+<div class="menu">
+  <div *ngIf="isLoggedIn" class="menu-links">
+    <div>
+      <button (click)="logout()" nbButton hero status="danger" shape="round" size="small">Logout</button>
+    </div>
+    <button nbButton hero status="warning" shape="round" size="small" (click)="goToUserProfile()">
+      {{username}}
+    </button>
+  </div>
+  <div *ngIf="!isLoggedIn" class="menu-links">
+    <button nbButton outline status="primary">
+      <a routerLink="/login" class="btn-login">Login</a>
+    </button>
+    <button nbButton hero status="info">
+      <a routerLink="/signup" class="btn-signup">Sign up</a>
+    </button>
+  </div>
+</div>

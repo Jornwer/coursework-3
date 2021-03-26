@@ -1,1 +1,20 @@
-<p>signup works!</p>
+<section class="login-form">
+  <div>
+    <p>
+      Регистрация аккаунта
+    </p>
+  </div>
+  <form (submit)="signup()" [formGroup]="signupForm">
+    <input type="text" nbInput fullWidth status="primary"
+           placeholder="Имя пользователя" [formControlName]="'username'">
+    <span *ngIf="!signupForm.get('username')?.valid && signupForm.get('username')?.touched">
+        Логин должен содержать 3-32 символа
+    </span>
+    <input type="password" nbInput fullWidth status="primary"
+           placeholder="Пароль" [formControlName]="'password'">
+    <span *ngIf="!signupForm.get('password')?.valid && signupForm.get('password')?.touched">
+        Пароль должен содержать 8-32 символа
+    </span>
+    <button type="submit" nbButton status="success">Ввойти в аккаунт</button>
+  </form>
+</section>
