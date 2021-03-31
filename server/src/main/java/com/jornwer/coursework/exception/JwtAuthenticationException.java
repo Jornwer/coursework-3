@@ -1,4 +1,4 @@
-package com.jornwer.coursework.security;
+package com.jornwer.coursework.exception;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

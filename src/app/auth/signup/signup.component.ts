@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { SignupRequestPayload } from './signup-request.payload';
 import { AuthService } from '../shared/auth.service';
 import { Router } from '@angular/router';
+import {AuthRequestPayload} from '../shared/auth-request.payload';
 
 @Component({
   selector: 'app-signup',
@@ -11,12 +11,13 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
-  signupRequestPayload: SignupRequestPayload;
+  authRequestPayload: AuthRequestPayload;
   // @ts-ignore
   signupForm: FormGroup;
+  isError = false;
 
   constructor(private authService: AuthService, private router: Router) {
-    this.signupRequestPayload = {
+    this.authRequestPayload = {
       username: '',
       password: ''
     };
@@ -27,21 +28,27 @@ export class SignupComponent implements OnInit {
       this.router.navigateByUrl('/');
     }
     this.signupForm = new FormGroup({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
+      username: new FormControl('', [Validators.required,
+                                                          Validators.minLength(3),
+                                                          Validators.maxLength(32)]),
+      password: new FormControl('', [Validators.required,
+                                                          Validators.minLength(8),
+                                                          Validators.maxLength(32)])
     });
   }
 
   signup(): void {
-    // @ts-ignore
-    this.signupRequestPayload.username = this.signupForm.get('username').value;
-    // @ts-ignore
-    this.signupRequestPayload.password = this.signupForm.get('password').value;
+    this.authRequestPayload.username = this.signupForm.get('username')?.value.trim();
+    this.authRequestPayload.password = this.signupForm.get('password')?.value.trim();
 
-    this.authService.signup(this.signupRequestPayload)
+    this.authService.signup(this.authRequestPayload)
       .subscribe(() => {
+        this.isError = false;
+        const login = this.authService.login(this.authRequestPayload)
+          .subscribe(() => login.unsubscribe());
         this.router.navigate(['/']);
       }, error => {
+        this.isError = true;
         console.log(error);
       });
   }

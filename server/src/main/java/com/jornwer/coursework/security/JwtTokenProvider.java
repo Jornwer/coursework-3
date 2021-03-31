@@ -1,5 +1,6 @@
 package com.jornwer.coursework.security;
 
+import com.jornwer.coursework.exception.JwtAuthenticationException;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;

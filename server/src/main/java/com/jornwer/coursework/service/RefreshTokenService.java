@@ -2,7 +2,7 @@ package com.jornwer.coursework.service;
 
 import com.jornwer.coursework.model.RefreshToken;
 import com.jornwer.coursework.repository.RefreshTokenRepository;
-import com.jornwer.coursework.security.JwtAuthenticationException;
+import com.jornwer.coursework.exception.JwtAuthenticationException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

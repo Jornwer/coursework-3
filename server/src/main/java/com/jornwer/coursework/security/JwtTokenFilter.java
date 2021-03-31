@@ -1,5 +1,6 @@
 package com.jornwer.coursework.security;
 
+import com.jornwer.coursework.exception.JwtAuthenticationException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;

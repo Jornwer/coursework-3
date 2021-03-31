@@ -1,9 +1,9 @@
 package com.jornwer.coursework.service;
 
 import com.jornwer.coursework.dto.AuthenticationResponse;
-import com.jornwer.coursework.dto.LoginRequest;
+import com.jornwer.coursework.dto.AuthRequest;
 import com.jornwer.coursework.dto.RefreshTokenRequest;
-import com.jornwer.coursework.dto.RegisterRequest;
+import com.jornwer.coursework.exception.DuplicateUserException;
 import com.jornwer.coursework.model.Role;
 import com.jornwer.coursework.model.Status;
 import com.jornwer.coursework.model.User;
@@ -28,10 +28,13 @@ public class AuthService {
     private final RefreshTokenService refreshTokenService;
     private final AuthenticationManager authenticationManager;
 
-    public void signup(RegisterRequest registerRequest) {
+    public void signup(AuthRequest authRequest) throws DuplicateUserException {
+        if (isUserRegistered(authRequest.getUsername())){
+            throw new DuplicateUserException("User with this username already exists");
+        }
         User user = new User();
-        user.setUsername(registerRequest.getUsername());
-        user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
+        user.setUsername(authRequest.getUsername());
+        user.setPassword(passwordEncoder.encode(authRequest.getPassword()));
         user.setCreatedDate(Instant.now());
         user.setStatus(Status.ACTIVE);
         user.setRole(Role.USER);
@@ -39,14 +42,18 @@ public class AuthService {
         userRepository.save(user);
     }
 
-    public AuthenticationResponse login(LoginRequest loginRequest) {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-        String token = jwtTokenProvider.createToken(loginRequest.getUsername(), Role.USER.toString());
+    private boolean isUserRegistered(String username) {
+        return userRepository.findByUsername(username).isPresent();
+    }
+
+    public AuthenticationResponse login(AuthRequest authRequest) {
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+        String token = jwtTokenProvider.createToken(authRequest.getUsername(), Role.USER.toString());
         return AuthenticationResponse.builder()
             .authenticationToken(token)
             .refreshToken(refreshTokenService.generateRefreshToken().getToken())
             .expiresAt(Instant.now().plusMillis(jwtTokenProvider.getValidityInMilliseconds() * 1000))
-            .username(loginRequest.getUsername())
+            .username(authRequest.getUsername())
             .build();
     }
 

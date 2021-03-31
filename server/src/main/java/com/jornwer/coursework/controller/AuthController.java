@@ -1,12 +1,13 @@
 package com.jornwer.coursework.controller;
 
 import com.jornwer.coursework.dto.AuthenticationResponse;
-import com.jornwer.coursework.dto.LoginRequest;
+import com.jornwer.coursework.dto.AuthRequest;
 import com.jornwer.coursework.dto.RefreshTokenRequest;
-import com.jornwer.coursework.dto.RegisterRequest;
+import com.jornwer.coursework.exception.DuplicateUserException;
 import com.jornwer.coursework.service.AuthService;
 import com.jornwer.coursework.service.RefreshTokenService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,14 +23,18 @@ public class AuthController {
     private final RefreshTokenService refreshTokenService;
 
     @PostMapping("/signup")
-    public ResponseEntity<String> signup(@RequestBody RegisterRequest registerRequest) {
-        authService.signup(registerRequest);
+    public ResponseEntity<String> signup(@RequestBody AuthRequest authRequest) {
+        try {
+            authService.signup(authRequest);
+        } catch (DuplicateUserException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
         return new ResponseEntity<>("User Registration Successful", OK);
     }
 
     @PostMapping("/login")
-    public AuthenticationResponse login(@RequestBody LoginRequest loginRequest) {
-        return authService.login(loginRequest);
+    public AuthenticationResponse login(@RequestBody AuthRequest authRequest) {
+        return authService.login(authRequest);
     }
 
     @PostMapping("/refresh/token")

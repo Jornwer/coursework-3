@@ -15,6 +15,13 @@
     <span *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched">
         Пароль должен содержать 8-32 символа
     </span>
-    <button type="submit" nbButton status="success">Ввойти в аккаунт</button>
+    <button type="submit" nbButton hero status="primary"
+            [disabled]="!loginForm.get('password')?.valid || !loginForm.get('username')?.valid">
+      Войти в аккаунт
+    </button>
+    <div *ngIf="this.isError">
+      <span>Нет пользователь с таким именем пользователя и паролем</span>
+    </div>
+    <span>Нет аккаунта? <a routerLink="/signup">Зарегистрируйтесь</a></span>
   </form>
 </section>
