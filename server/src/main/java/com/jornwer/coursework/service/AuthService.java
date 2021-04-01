@@ -42,7 +42,7 @@ public class AuthService {
         userRepository.save(user);
     }
 
-    private boolean isUserRegistered(String username) {
+    public boolean isUserRegistered(String username) {
         return userRepository.findByUsername(username).isPresent();
     }
 
