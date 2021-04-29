@@ -1,18 +1,21 @@
 <div class="menu">
   <div *ngIf="isLoggedIn" class="menu-links">
     <div>
-      <button (click)="logout()" nbButton hero status="danger" shape="round" size="small">Logout</button>
+      <button (click)="logout()" nbButton status="danger"
+              shape="round" size="small" class="capitalize">
+        Logout
+      </button>
     </div>
-    <button nbButton hero status="warning" shape="round" size="small" (click)="goToUserProfile()">
+    <button nbButton status="warning" shape="round" size="small" (click)="goToUserProfile()" class="capitalize">
       {{username}}
     </button>
   </div>
   <div *ngIf="!isLoggedIn" class="menu-links">
-    <button nbButton outline status="primary" shape="round">
-      <a routerLink="/login" class="btn-login">Login</a>
+    <button nbButton outline status="primary" shape="round" routerLink="/login" class="capitalize">
+      Login
     </button>
-    <button nbButton hero status="info" shape="round">
-      <a routerLink="/signup" class="btn-signup">Sign up</a>
+    <button nbButton status="info" shape="round" routerLink="/signup" class="capitalize">
+      Sign up
     </button>
   </div>
 </div>

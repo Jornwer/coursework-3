@@ -3,18 +3,18 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../shared/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {throwError} from 'rxjs';
-import {AuthRequestPayload} from '../shared/auth-request.payload';
+import {LoginRequestPayload} from '../shared/login-request.payload';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss', '../shared/login.styles.scss']
+  styleUrls: ['./login.component.scss', '../shared/auth.styles.scss']
 })
 export class LoginComponent implements OnInit {
 
   // @ts-ignore
   loginForm: FormGroup;
-  authRequestPayload: AuthRequestPayload;
+  authRequestPayload: LoginRequestPayload;
   isError = false;
 
   constructor(private authService: AuthService, private activatedRoute: ActivatedRoute,

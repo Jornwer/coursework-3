@@ -5,22 +5,49 @@
     </p>
   </div>
   <form (submit)="signup()" [formGroup]="signupForm">
+<!--    username-->
     <input type="text" nbInput fullWidth status="primary"
            placeholder="Имя пользователя" [formControlName]="'username'">
     <span *ngIf="!signupForm.get('username')?.valid && signupForm.get('username')?.touched">
         Логин должен содержать 3-32 символа
     </span>
+<!--    password-->
     <input type="password" nbInput fullWidth status="primary"
            placeholder="Пароль" [formControlName]="'password'">
     <span *ngIf="!signupForm.get('password')?.valid && signupForm.get('password')?.touched">
         Пароль должен содержать 8-32 символа
     </span>
+<!--    email-->
+    <input type="text" nbInput fullWidth status="primary"
+           placeholder="Почта" [formControlName]="'email'">
+    <span *ngIf="!signupForm.get('email')?.valid && signupForm.get('email')?.touched">
+        Почта должна быть верной
+    </span>
+    <div class="fullName">
+<!--    firstName-->
+      <div>
+        <input type="text" nbInput fullWidth status="primary"
+               placeholder="Имя" [formControlName]="'firstName'">
+        <span *ngIf="!signupForm.get('firstName')?.valid && signupForm.get('firstName')?.touched">
+          Имя должен содержать 3-32 символа
+        </span>
+      </div>
+<!--    lastName-->
+      <div>
+        <input type="text" nbInput fullWidth status="primary"
+               placeholder="Фамилия" [formControlName]="'lastName'">
+        <span *ngIf="!signupForm.get('lastName')?.valid && signupForm.get('lastName')?.touched">
+            Фамилия должен содержать 3-32 символа
+        </span>
+      </div>
+    </div>
+    <!--    input-->
     <button type="submit" nbButton hero status="primary"
             [disabled]="!signupForm.get('password')?.valid || !signupForm.get('username')?.valid">
-      Ввойти в аккаунт
+      Войти в аккаунт
     </button>
     <div *ngIf="this.isError">
-      <span>Имя пользователя уже используется</span>
+      <span>Имя пользователя или почта уже используется</span>
     </div>
     <span>Есть аккаунт? <a routerLink="/login">Войдите</a></span>
   </form>
