@@ -1,6 +1,6 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable} from 'rxjs';
+import {Observable, OperatorFunction} from 'rxjs';
 import { LocalStorageService } from 'ngx-webstorage';
 import { AuthResponse } from '../login/auth-response.payload';
 import { map } from 'rxjs/operators';
@@ -24,32 +24,24 @@ export class AuthService {
 
   signup(authRequestPayload: SignupRequestPayload): Observable<any> {
     return this.httpClient.post<AuthResponse>(serverUrl + 'api/auth/signup', authRequestPayload)
-      .pipe(
-        map(data => {
-          this.localStorage.store('authenticationToken', data.authenticationToken);
-          this.localStorage.store('username', data.username);
-          this.localStorage.store('role', data.role);
+      .pipe(this.mapUser());
+  }
 
-          this.loggedIn.emit(true);
-          this.username.emit(data.username);
-          return true;
-      })
-    );
+  private mapUser(): OperatorFunction<any, any>  {
+    return map(data => {
+      this.localStorage.store('authenticationToken', data.authenticationToken);
+      this.localStorage.store('username', data.username);
+      this.localStorage.store('role', data.role);
+
+      this.loggedIn.emit(true);
+      this.username.emit(data.username);
+      return true;
+    });
   }
 
   login(authRequestPayload: LoginRequestPayload): Observable<boolean> {
     return this.httpClient.post<AuthResponse>(serverUrl + 'api/auth/login', authRequestPayload)
-      .pipe(
-        map(data => {
-          this.localStorage.store('authenticationToken', data.authenticationToken);
-          this.localStorage.store('username', data.username);
-          this.localStorage.store('role', data.role);
-
-          this.loggedIn.emit(true);
-          this.username.emit(data.username);
-          return true;
-        })
-      );
+      .pipe(this.mapUser());
   }
 
   getJwtToken(): string {
