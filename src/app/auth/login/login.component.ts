@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   authRequestPayload: LoginRequestPayload;
   isError = false;
+  showPassword = false;
 
   constructor(private authService: AuthService, private activatedRoute: ActivatedRoute,
               private router: Router) {
@@ -24,6 +25,17 @@ export class LoginComponent implements OnInit {
       username: '',
       password: ''
     };
+  }
+
+  getInputType(): string {
+    if (this.showPassword) {
+      return 'text';
+    }
+    return 'password';
+  }
+
+  toggleShowPassword(): void {
+    this.showPassword = !this.showPassword;
   }
 
   ngOnInit(): void {

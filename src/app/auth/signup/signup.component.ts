@@ -15,6 +15,7 @@ export class SignupComponent implements OnInit {
   // @ts-ignore
   signupForm: FormGroup;
   isError = false;
+  showPassword = false;
 
   constructor(private authService: AuthService, private router: Router) {
     this.signupRequestPayload = {
@@ -48,6 +49,17 @@ export class SignupComponent implements OnInit {
                                                           Validators.maxLength(32),
                                                           Validators.minLength(3)])
     });
+  }
+
+  getInputType(): string {
+    if (this.showPassword) {
+      return 'text';
+    }
+    return 'password';
+  }
+
+  toggleShowPassword(): void {
+    this.showPassword = !this.showPassword;
   }
 
   signup(): void {

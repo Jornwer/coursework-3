@@ -12,8 +12,15 @@
         Логин должен содержать 3-32 символа
     </span>
 <!--    password-->
-    <input type="password" nbInput fullWidth status="primary"
-           placeholder="Пароль" [formControlName]="'password'">
+    <nb-form-field>
+      <input [type]="getInputType()" nbInput fullWidth status="primary"
+             placeholder="Пароль" [formControlName]="'password'">
+      <button nbSuffix nbButton ghost (click)="toggleShowPassword()" class="icon" type="button">
+        <nb-icon [icon]="showPassword ? 'eye-outline' : 'eye-off-2-outline'" pack="eva"
+                 [attr.aria-label]="showPassword ? 'hide password' : 'show password'">
+        </nb-icon>
+      </button>
+    </nb-form-field>
     <span *ngIf="!signupForm.get('password')?.valid && signupForm.get('password')?.touched">
         Пароль должен содержать 8-32 символа
     </span>
@@ -42,12 +49,12 @@
       </div>
     </div>
     <!--    input-->
-    <button type="submit" nbButton hero status="primary"
+    <button type="submit" nbButton hero status="primary" class="btn-submit"
             [disabled]="!signupForm.get('password')?.valid || !signupForm.get('username')?.valid">
       Войти в аккаунт
     </button>
     <div *ngIf="this.isError">
-      <span>Имя пользователя или почта уже используется</span>
+      <span>Имя пользователя или почта уже используются</span>
     </div>
     <span>Есть аккаунт? <a routerLink="/login">Войдите</a></span>
   </form>
