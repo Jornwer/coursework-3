@@ -23,7 +23,7 @@ export class AuthService {
   }
 
   signup(authRequestPayload: SignupRequestPayload): Observable<any> {
-    return this.httpClient.post<AuthResponse>(serverUrl + 'api/auth/signup', authRequestPayload)
+    return this.httpClient.post<AuthResponse>(serverUrl + 'auth/signup', authRequestPayload)
       .pipe(this.mapUser());
   }
 
@@ -40,7 +40,7 @@ export class AuthService {
   }
 
   login(authRequestPayload: LoginRequestPayload): Observable<boolean> {
-    return this.httpClient.post<AuthResponse>(serverUrl + 'api/auth/login', authRequestPayload)
+    return this.httpClient.post<AuthResponse>(serverUrl + 'auth/login', authRequestPayload)
       .pipe(this.mapUser());
   }
 
