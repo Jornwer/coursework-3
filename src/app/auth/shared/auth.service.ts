@@ -5,10 +5,8 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { AuthResponse } from '../login/auth-response.payload';
 import { map } from 'rxjs/operators';
 import {LoginRequestPayload} from './login-request.payload';
-import {SignupRequestPayload} from './signup-request.payload';
-
-const serverUrl = 'https://cw4sem-server.herokuapp.com/';
-// const serverUrl = 'http://127.0.0.1:8080/';
+import {UserRequestPayload} from './user-request.payload';
+import {serverUrl} from '../../shared/server.url';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +20,7 @@ export class AuthService {
               private localStorage: LocalStorageService) {
   }
 
-  signup(authRequestPayload: SignupRequestPayload): Observable<any> {
+  signup(authRequestPayload: UserRequestPayload): Observable<any> {
     return this.httpClient.post<AuthResponse>(serverUrl + 'auth/signup', authRequestPayload)
       .pipe(this.mapUser());
   }

@@ -1,0 +1,39 @@
+<section class="main">
+  <form (submit)="change()" [formGroup]="changeForm">
+<!--    username-->
+    <input type="text" nbInput fullWidth status="primary" tabindex="1"
+           placeholder="Имя пользователя" [formControlName]="'username'">
+<!--    password-->
+    <nb-form-field>
+      <input [type]="getInputType()" nbInput fullWidth status="primary" tabindex="2"
+             placeholder="Пароль" [formControlName]="'password'">
+      <button nbSuffix nbButton ghost (click)="toggleShowPassword()" class="icon" type="button">
+        <nb-icon [icon]="showPassword ? 'eye-outline' : 'eye-off-2-outline'" pack="eva"
+                 [attr.aria-label]="showPassword ? 'hide password' : 'show password'">
+        </nb-icon>
+      </button>
+    </nb-form-field>
+<!--    email-->
+    <input type="text" nbInput fullWidth status="primary" tabindex="3"
+           placeholder="Почта" [formControlName]="'email'">
+    <div class="fullName">
+<!--    firstName-->
+      <div>
+        <input type="text" nbInput fullWidth status="primary" tabindex="4"
+               placeholder="Имя" [formControlName]="'firstName'">
+      </div>
+<!--    lastName-->
+      <div>
+        <input type="text" nbInput fullWidth status="primary" tabindex="5"
+               placeholder="Фамилия" [formControlName]="'lastName'">
+      </div>
+    </div>
+<!--    input-->
+    <button type="submit" nbButton hero status="primary" class="btn-submit" tabindex="6">
+      Войти в аккаунт
+    </button>
+    <div *ngIf="this.isError">
+      <span>Введенные данные должны быть верными или пустыми</span>
+    </div>
+  </form>
+</section>

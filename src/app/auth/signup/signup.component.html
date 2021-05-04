@@ -6,14 +6,14 @@
   </div>
   <form (submit)="signup()" [formGroup]="signupForm">
 <!--    username-->
-    <input type="text" nbInput fullWidth status="primary"
+    <input type="text" nbInput fullWidth status="primary" tabindex="1"
            placeholder="Имя пользователя" [formControlName]="'username'">
     <span *ngIf="!signupForm.get('username')?.valid && signupForm.get('username')?.touched">
         Логин должен содержать 3-32 символа
     </span>
 <!--    password-->
     <nb-form-field>
-      <input [type]="getInputType()" nbInput fullWidth status="primary"
+      <input [type]="getInputType()" nbInput fullWidth status="primary" tabindex="2"
              placeholder="Пароль" [formControlName]="'password'">
       <button nbSuffix nbButton ghost (click)="toggleShowPassword()" class="icon" type="button">
         <nb-icon [icon]="showPassword ? 'eye-outline' : 'eye-off-2-outline'" pack="eva"
@@ -25,7 +25,7 @@
         Пароль должен содержать 8-32 символа
     </span>
 <!--    email-->
-    <input type="text" nbInput fullWidth status="primary"
+    <input type="text" nbInput fullWidth status="primary" tabindex="3"
            placeholder="Почта" [formControlName]="'email'">
     <span *ngIf="!signupForm.get('email')?.valid && signupForm.get('email')?.touched">
         Почта должна быть верной
@@ -33,7 +33,7 @@
     <div class="fullName">
 <!--    firstName-->
       <div>
-        <input type="text" nbInput fullWidth status="primary"
+        <input type="text" nbInput fullWidth status="primary" tabindex="4"
                placeholder="Имя" [formControlName]="'firstName'">
         <span *ngIf="!signupForm.get('firstName')?.valid && signupForm.get('firstName')?.touched">
           Имя должен содержать 3-32 символа
@@ -41,7 +41,7 @@
       </div>
 <!--    lastName-->
       <div>
-        <input type="text" nbInput fullWidth status="primary"
+        <input type="text" nbInput fullWidth status="primary" tabindex="5"
                placeholder="Фамилия" [formControlName]="'lastName'">
         <span *ngIf="!signupForm.get('lastName')?.valid && signupForm.get('lastName')?.touched">
             Фамилия должен содержать 3-32 символа
@@ -49,7 +49,7 @@
       </div>
     </div>
     <!--    input-->
-    <button type="submit" nbButton hero status="primary" class="btn-submit"
+    <button type="submit" nbButton hero status="primary" class="btn-submit" tabindex="6"
             [disabled]="!signupForm.get('password')?.valid || !signupForm.get('username')?.valid">
       Войти в аккаунт
     </button>

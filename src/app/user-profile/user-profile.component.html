@@ -1,1 +1,15 @@
-<p>user-profile works!</p>
+<section class="main">
+  <div class="header">
+    <h5>
+      Профиль пользователя
+    </h5>
+  </div>
+  <div class="profile">
+    <p>Имя пользователя: <b>{{user.username}}</b></p>
+    <p>Почта:            <b>{{user.email}}</b></p>
+    <p>Полное имя:       <b>{{user.firstName + ' ' + user.lastName}}</b></p>
+  </div>
+  <button nbButton outline status="primary" shape="round" routerLink="/settings" class="normalize">
+    Перейти в настройки
+  </button>
+</section>

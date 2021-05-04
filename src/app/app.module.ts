@@ -20,9 +20,11 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { HomeComponent } from './home/home.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {NgxWebstorageModule} from 'ngx-webstorage';
 import {ReactiveFormsModule} from '@angular/forms';
+import {TokenInterceptor} from './token-interceptor';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     LoginComponent,
     SignupComponent,
     UserProfileComponent,
-    HomeComponent
+    HomeComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,11 @@ import {ReactiveFormsModule} from '@angular/forms';
     NbIconModule,
     NbFormFieldModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

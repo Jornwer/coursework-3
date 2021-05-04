@@ -5,13 +5,13 @@
     </p>
   </div>
   <form (submit)="login()" [formGroup]="loginForm">
-    <input type="text" nbInput fullWidth status="primary"
+    <input type="text" nbInput fullWidth status="primary" tabindex="1"
            placeholder="Имя пользователя" [formControlName]="'username'">
     <span *ngIf="!loginForm.get('username')?.valid && loginForm.get('username')?.touched">
         Логин должен содержать 3-32 символа
     </span>
     <nb-form-field>
-      <input [type]="getInputType()" nbInput fullWidth status="primary"
+      <input [type]="getInputType()" nbInput fullWidth status="primary" tabindex="2"
              placeholder="Пароль" [formControlName]="'password'">
       <button nbSuffix nbButton ghost (click)="toggleShowPassword()" class="icon" type="button">
         <nb-icon [icon]="showPassword ? 'eye-outline' : 'eye-off-2-outline'" pack="eva"
@@ -22,7 +22,7 @@
     <span *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched">
         Пароль должен содержать 8-32 символа
     </span>
-    <button type="submit" nbButton hero status="primary" class="btn-submit"
+    <button type="submit" nbButton hero status="primary" class="btn-submit" tabindex="3"
             [disabled]="!loginForm.get('password')?.valid || !loginForm.get('username')?.valid">
       Войти в аккаунт
     </button>

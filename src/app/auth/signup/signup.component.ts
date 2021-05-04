@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../shared/auth.service';
 import { Router } from '@angular/router';
-import {SignupRequestPayload} from '../shared/signup-request.payload';
+import {UserRequestPayload} from '../shared/user-request.payload';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +11,7 @@ import {SignupRequestPayload} from '../shared/signup-request.payload';
 })
 export class SignupComponent implements OnInit {
 
-  signupRequestPayload: SignupRequestPayload;
+  signupRequestPayload: UserRequestPayload;
   // @ts-ignore
   signupForm: FormGroup;
   isError = false;

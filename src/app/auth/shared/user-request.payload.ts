@@ -1,4 +1,4 @@
-export interface SignupRequestPayload {
+export interface UserRequestPayload {
   email: string;
   firstName: string;
   lastName: string;
