@@ -18,13 +18,13 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserProfileComponent } from './profile/user-profile/user-profile.component';
 import { HomeComponent } from './home/home.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {NgxWebstorageModule} from 'ngx-webstorage';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TokenInterceptor} from './token-interceptor';
-import { SettingsComponent } from './settings/settings.component';
+import { SettingsComponent } from './profile/settings/settings.component';
 
 @NgModule({
   declarations: [

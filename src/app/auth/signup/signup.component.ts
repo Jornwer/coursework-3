@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../shared/auth.service';
 import { Router } from '@angular/router';
 import {UserRequestPayload} from '../shared/user-request.payload';
+import {UserService} from '../../shared/service/user.sevice';
 
 @Component({
   selector: 'app-signup',
@@ -17,13 +18,14 @@ export class SignupComponent implements OnInit {
   isError = false;
   showPassword = false;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, private userService: UserService) {
     this.signupRequestPayload = {
       username: '',
       password: '',
       email: '',
       firstName: '',
-      lastName: ''
+      lastName: '',
+      organizationId: null
     };
   }
 
@@ -72,6 +74,7 @@ export class SignupComponent implements OnInit {
     this.authService.signup(this.signupRequestPayload)
       .subscribe(() => {
         this.isError = false;
+        this.userService.loadSelf();
         this.router.navigate(['/']);
       }, error => {
         this.isError = true;

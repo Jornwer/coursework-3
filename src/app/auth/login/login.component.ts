@@ -4,6 +4,7 @@ import {AuthService} from '../shared/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {throwError} from 'rxjs';
 import {LoginRequestPayload} from '../shared/login-request.payload';
+import {UserService} from '../../shared/service/user.sevice';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   showPassword = false;
 
   constructor(private authService: AuthService, private activatedRoute: ActivatedRoute,
-              private router: Router) {
+              private router: Router, private userService: UserService) {
     this.isError = false;
     this.authRequestPayload = {
       username: '',
@@ -55,6 +56,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(this.authRequestPayload).subscribe(() => {
       this.isError = false;
+      this.userService.loadSelf();
       this.router.navigateByUrl('');
     }, error => {
       this.isError = true;

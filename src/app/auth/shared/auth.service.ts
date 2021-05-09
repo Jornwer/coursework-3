@@ -1,9 +1,9 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {Observable, OperatorFunction} from 'rxjs';
-import { LocalStorageService } from 'ngx-webstorage';
-import { AuthResponse } from '../login/auth-response.payload';
-import { map } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, Observable, OperatorFunction} from 'rxjs';
+import {LocalStorageService} from 'ngx-webstorage';
+import {AuthResponse} from '../login/auth-response.payload';
+import {map} from 'rxjs/operators';
 import {LoginRequestPayload} from './login-request.payload';
 import {UserRequestPayload} from './user-request.payload';
 import {serverUrl} from '../../shared/server.url';
@@ -13,8 +13,7 @@ import {serverUrl} from '../../shared/server.url';
 })
 export class AuthService {
 
-  @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
-  @Output() username: EventEmitter<string> = new EventEmitter();
+  loggedIn: BehaviorSubject<boolean> = new BehaviorSubject(true as boolean);
 
   constructor(private httpClient: HttpClient,
               private localStorage: LocalStorageService) {
@@ -31,8 +30,7 @@ export class AuthService {
       this.localStorage.store('username', data.username);
       this.localStorage.store('role', data.role);
 
-      this.loggedIn.emit(true);
-      this.username.emit(data.username);
+      this.loggedIn.next(true);
       return true;
     });
   }
@@ -51,16 +49,25 @@ export class AuthService {
   }
 
   logout(): void {
-    this.localStorage.clear('authenticationToken');
-    this.localStorage.clear('username');
-    this.localStorage.clear('role');
+    this.clearStorage();
+    this.loggedIn.next(false);
   }
 
-  getUserName(): string {
+  getUsername(): string {
     return this.localStorage.retrieve('username');
   }
 
   isLoggedIn(): boolean {
     return this.getJwtToken() != null;
+  }
+
+  setUsernameInStorage(username: string): void {
+    this.localStorage.store('username', username);
+  }
+
+  clearStorage(): void {
+    this.localStorage.clear('authenticationToken');
+    this.localStorage.clear('username');
+    this.localStorage.clear('role');
   }
 }

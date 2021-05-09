@@ -1,14 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../model/user';
+import {User} from '../../shared/model/user';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../service/user.sevice';
-import {UserRequestPayload} from '../auth/shared/user-request.payload';
+import {UserService} from '../../shared/service/user.sevice';
+import {UserRequestPayload} from '../../auth/shared/user-request.payload';
+import {Router} from '@angular/router';
+import {AuthService} from '../../auth/shared/auth.service';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss',
-              '../auth/shared/auth.styles.scss']
+              '../../auth/shared/auth.styles.scss']
 })
 export class SettingsComponent implements OnInit {
 
@@ -19,7 +21,7 @@ export class SettingsComponent implements OnInit {
   isError = false;
   showPassword = false;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.userService.user.subscribe(u => this.user = u);
@@ -49,14 +51,19 @@ export class SettingsComponent implements OnInit {
       return;
     }
     const userRequestPayload: UserRequestPayload = {
-      username:  this.changeForm.get('username')?.valid  ? this.changeForm.get('username')?.value  : this.user.username,
-      password:  this.changeForm.get('password')?.valid  ? this.changeForm.get('password')?.value  : this.user.password,
-      email:     this.changeForm.get('email')?.valid     ? this.changeForm.get('email')?.value     : this.user.email,
-      firstName: this.changeForm.get('firstName')?.valid ? this.changeForm.get('firstName')?.value : this.user.firstName,
-      lastName:  this.changeForm.get('lastName')?.valid  ? this.changeForm.get('lastName')?.value  : this.user.lastName
+      username:  this.changeForm.get('username')?.valid  ? this.changeForm.get('username')?.value  : this.user?.username,
+      password:  this.changeForm.get('password')?.valid  ? this.changeForm.get('password')?.value  : '',
+      email:     this.changeForm.get('email')?.valid     ? this.changeForm.get('email')?.value     : this.user?.email,
+      firstName: this.changeForm.get('firstName')?.valid ? this.changeForm.get('firstName')?.value : this.user?.firstName,
+      lastName:  this.changeForm.get('lastName')?.valid  ? this.changeForm.get('lastName')?.value  : this.user?.lastName,
+      organizationId: this.user?.organization?.id
     };
-    /*this.userService.updateSelf(userRequestPayload).subscribe(() => this.isError = false,
-      () => this.isError = true);*/
+    this.userService.updateSelf(userRequestPayload).subscribe(() => {
+      if (this.changeForm.get('username')?.valid || this.changeForm.get('password')?.valid) {
+        this.authService.logout();
+      }
+      this.router.navigateByUrl('/');
+    }, () => this.isError = true);
   }
 
   private validateInput(): boolean {

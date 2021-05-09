@@ -9,5 +9,17 @@ export interface User {
   email: string;
   role: string;
   createdDate: number;
-  organization: Organization;
+  organization?: Organization;
 }
+
+export const defaultUser: User = {
+  id: 0,
+  username: '',
+  password: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  role: '',
+  createdDate: 0,
+  organization: undefined
+};

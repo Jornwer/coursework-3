@@ -3,8 +3,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {SignupComponent} from './auth/signup/signup.component';
 import {LoginComponent} from './auth/login/login.component';
 import {HomeComponent} from './home/home.component';
-import {UserProfileComponent} from './user-profile/user-profile.component';
-import {SettingsComponent} from './settings/settings.component';
+import {UserProfileComponent} from './profile/user-profile/user-profile.component';
+import {SettingsComponent} from './profile/settings/settings.component';
 import {AuthGuard} from './auth/auth.guard';
 import {UnauthorizedGuard} from './auth/unauthorized.guard';
 

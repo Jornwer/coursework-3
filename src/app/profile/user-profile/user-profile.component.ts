@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../model/user';
-import {UserService} from '../service/user.sevice';
+import {User} from '../../shared/model/user';
+import {UserService} from '../../shared/service/user.sevice';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,12 +8,13 @@ import {UserService} from '../service/user.sevice';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-  // @ts-ignore
-  user: User;
+  user: User | undefined;
 
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.userService.user.subscribe(u => this.user = u);
+    this.userService.user.subscribe(u => {
+      this.user = u;
+    });
   }
 }

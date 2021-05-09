@@ -4,4 +4,5 @@ export interface UserRequestPayload {
   lastName: string;
   username: string;
   password: string;
+  organizationId: number | null | undefined;
 }
