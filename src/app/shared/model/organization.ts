@@ -6,4 +6,5 @@ export interface Organization {
   type: string;
   users: User[];
   createdDate: number;
+  employeeCount: number;
 }
