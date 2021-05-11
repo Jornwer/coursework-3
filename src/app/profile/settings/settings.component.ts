@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../../shared/model/user';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../shared/service/user.sevice';
-import {UserRequestPayload} from '../../auth/shared/user-request.payload';
+import {UserRequestPayload} from '../../shared/payload/user-request.payload';
 import {Router} from '@angular/router';
 import {AuthService} from '../../auth/shared/auth.service';
 

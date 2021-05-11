@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {User, defaultUser} from '../model/user';
 import {serverUrl} from '../server.url';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {UserRequestPayload} from '../../auth/shared/user-request.payload';
+import {UserRequestPayload} from '../payload/user-request.payload';
 import {tap} from 'rxjs/operators';
 import {AuthService} from '../../auth/shared/auth.service';
 

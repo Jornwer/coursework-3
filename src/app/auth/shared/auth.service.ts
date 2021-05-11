@@ -2,10 +2,10 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable, OperatorFunction} from 'rxjs';
 import {LocalStorageService} from 'ngx-webstorage';
-import {AuthResponse} from '../login/auth-response.payload';
+import {AuthResponse} from '../../shared/payload/auth-response.payload';
 import {map} from 'rxjs/operators';
-import {LoginRequestPayload} from './login-request.payload';
-import {UserRequestPayload} from './user-request.payload';
+import {LoginRequestPayload} from '../../shared/payload/login-request.payload';
+import {UserRequestPayload} from '../../shared/payload/user-request.payload';
 import {serverUrl} from '../../shared/server.url';
 
 @Injectable({
