@@ -25,6 +25,9 @@ import {NgxWebstorageModule} from 'ngx-webstorage';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TokenInterceptor} from './token-interceptor';
 import { SettingsComponent } from './profile/settings/settings.component';
+import { CompaniesComponent } from './home/companies/companies.component';
+import { CompanyAdminComponent } from './home/companies/company-admin/company-admin.component';
+import { CompanyUserComponent } from './home/companies/company-user/company-user.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { SettingsComponent } from './profile/settings/settings.component';
     SignupComponent,
     UserProfileComponent,
     HomeComponent,
-    SettingsComponent
+    SettingsComponent,
+    CompaniesComponent,
+    CompanyAdminComponent,
+    CompanyUserComponent
   ],
   imports: [
     BrowserModule,

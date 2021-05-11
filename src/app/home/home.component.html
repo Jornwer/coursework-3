@@ -1,1 +1,11 @@
-<p>home works!</p>
+<section class="container">
+  <div *ngIf="!isLoggedIn" style="text-align: center">
+    <p>Для просмотра списка организаций необходимо выполнить вход</p>
+    <p routerLink="/login" style="color: blue">
+      Войти в аккаунт
+    </p>
+  </div>
+  <div *ngIf="isLoggedIn">
+    <app-companies></app-companies>
+  </div>
+</section>

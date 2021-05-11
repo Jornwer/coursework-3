@@ -1,0 +1,11 @@
+<section>
+  <div *ngFor="let organization of organizations">
+    <div *ngIf="isAdmin; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+      <app-company-admin [organization]="organization"></app-company-admin>
+    </ng-template>
+    <ng-template #elseBlock>
+      <app-company-user [organization]="organization"></app-company-user>
+    </ng-template>
+  </div>
+</section>
