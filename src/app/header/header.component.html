@@ -1,21 +1,26 @@
 <div class="menu">
-  <div *ngIf="isLoggedIn" class="menu-links">
-    <div>
-      <button (click)="logout()" nbButton status="danger"
-              shape="round" size="small" class="normalize">
-        Logout
+  <div class="menu-links">
+    <button nbButton outline status="primary" shape="round" routerLink="/" class="normalize">
+      На главную страницу
+    </button>
+    <div *ngIf="isLoggedIn">
+      <div>
+        <button (click)="logout()" nbButton status="danger"
+                shape="round" size="small" class="normalize">
+          Logout
+        </button>
+      </div>
+      <button nbButton status="warning" shape="round" size="small" routerLink="user-profile" class="normalize">
+        {{username}}
       </button>
     </div>
-    <button nbButton status="warning" shape="round" size="small" routerLink="user-profile" class="normalize">
-      {{username}}
-    </button>
-  </div>
-  <div *ngIf="!isLoggedIn" class="menu-links">
-    <button nbButton outline status="primary" shape="round" routerLink="/login" class="normalize">
-      Login
-    </button>
-    <button nbButton status="info" shape="round" routerLink="/signup" class="normalize">
-      Sign up
-    </button>
+    <div *ngIf="!isLoggedIn">
+      <button nbButton outline status="primary" shape="round" routerLink="/login" class="normalize">
+        Login
+      </button>
+      <button nbButton status="info" shape="round" routerLink="/signup" class="normalize">
+        Sign up
+      </button>
+    </div>
   </div>
 </div>
