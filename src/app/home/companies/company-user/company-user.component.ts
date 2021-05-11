@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Organization} from '../../../shared/model/organization';
+import {defaultOrganization, Organization} from '../../../shared/model/organization';
 
 @Component({
   selector: 'app-company-user',
@@ -8,7 +8,11 @@ import {Organization} from '../../../shared/model/organization';
 })
 export class CompanyUserComponent{
 
-  @Input() organization: Organization | undefined;
+  @Input() organization: Organization = defaultOrganization;
 
   constructor() { }
+
+  enterCompany(): void {
+    // todo
+  }
 }

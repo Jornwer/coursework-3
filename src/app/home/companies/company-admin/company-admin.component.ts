@@ -11,4 +11,8 @@ export class CompanyAdminComponent{
   @Input() organization: Organization | undefined;
 
   constructor() { }
+
+  enterCompany(): void {
+    // todo
+  }
 }

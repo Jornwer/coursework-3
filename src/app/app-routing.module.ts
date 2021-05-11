@@ -7,12 +7,14 @@ import {UserProfileComponent} from './profile/user-profile/user-profile.componen
 import {SettingsComponent} from './profile/settings/settings.component';
 import {AuthGuard} from './auth/auth.guard';
 import {UnauthorizedGuard} from './auth/unauthorized.guard';
+import {CompaniesComponent} from './home/companies/companies.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'signup', component: SignupComponent, canActivate: [UnauthorizedGuard]},
   {path: 'login', component: LoginComponent, canActivate: [UnauthorizedGuard]},
   {path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard]},
+  {path: 'companies', component: CompaniesComponent, canActivate: [AuthGuard]},
   {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]}
 ];
 

@@ -8,3 +8,12 @@ export interface Organization {
   createdDate: number;
   employeeCount: number;
 }
+
+export const defaultOrganization: Organization = {
+  id: 0,
+  name: '',
+  type: '',
+  users: new Array<User>(),
+  createdDate: 0,
+  employeeCount: 0
+};

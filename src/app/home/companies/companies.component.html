@@ -1,4 +1,4 @@
-<section>
+<section class="container">
   <div *ngFor="let organization of organizations">
     <div *ngIf="isAdmin; then thenBlock else elseBlock"></div>
     <ng-template #thenBlock>

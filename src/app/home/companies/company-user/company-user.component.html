@@ -1,1 +1,13 @@
-<p>company-user works!</p>
+<section>
+  <div>
+    <p>Название организации: {{organization.name}}</p>
+    <p>Тип организации: {{organization.type}}</p>
+    <p>Число работников: {{organization.employeeCount}}</p>
+    <p>Дата создания: {{organization.createdDate * 1000 | date:'dd-MM-yyyy'}}</p>
+  </div>
+  <div>
+    <button nbButton outline status="primary" shape="round" (click)="enterCompany()">
+      Вступить
+    </button>
+  </div>
+</section>
