@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../shared/service/user.sevice';
-import {Organization} from '../../shared/model/organization';
-import {OrganizationService} from '../../shared/service/organization.service';
+import {UserService} from '../shared/service/user.sevice';
+import {Organization} from '../shared/model/organization';
+import {OrganizationService} from '../shared/service/organization.service';
 
 @Component({
   selector: 'app-companies',
@@ -12,9 +12,13 @@ export class CompaniesComponent implements OnInit{
 
   isAdmin = false;
   organizations: Organization[] = new Array<Organization>();
+  inOrganization = false;
+  currentOrganization: number | undefined;
 
   constructor(private userService: UserService, private organizationService: OrganizationService) {
     userService.user.subscribe(u => this.isAdmin = u.role === 'ADMIN');
+    userService.inOrganization.subscribe(is => this.inOrganization = is);
+    userService.user.subscribe(u => this.currentOrganization = u.organization?.id);
   }
 
   ngOnInit(): void {

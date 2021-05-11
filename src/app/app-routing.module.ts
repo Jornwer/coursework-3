@@ -7,7 +7,7 @@ import {UserProfileComponent} from './profile/user-profile/user-profile.componen
 import {SettingsComponent} from './profile/settings/settings.component';
 import {AuthGuard} from './auth/auth.guard';
 import {UnauthorizedGuard} from './auth/unauthorized.guard';
-import {CompaniesComponent} from './home/companies/companies.component';
+import {CompaniesComponent} from './companies/companies.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},

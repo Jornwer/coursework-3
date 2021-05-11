@@ -8,6 +8,9 @@
     <p>Имя пользователя: <b>{{user?.username}}</b></p>
     <p>Почта:            <b>{{user?.email}}</b></p>
     <p>Полное имя:       <b>{{user?.firstName + ' ' + user?.lastName}}</b></p>
+    <ng-template [ngIf]="user?.organization?.id">
+      <p>Имя организации:  <b>{{user?.organization?.name}}</b></p>
+    </ng-template>
   </div>
   <button nbButton outline status="primary" shape="round" routerLink="/settings" class="normalize">
     Перейти в настройки

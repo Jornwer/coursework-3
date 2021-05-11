@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {defaultOrganization, Organization} from '../../../shared/model/organization';
+import {defaultOrganization, Organization} from '../../shared/model/organization';
 
 @Component({
   selector: 'app-company-admin',

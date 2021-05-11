@@ -1,0 +1,20 @@
+<section>
+  <div>
+    <p>Название организации: {{organization.name}}</p>
+    <p>Тип организации: {{organization.type}}</p>
+    <p>Число работников: {{organization.employeeCount}}</p>
+    <p>Дата создания: {{organization.createdDate * 1000 | date:'dd.MM.yyyy'}}</p>
+  </div>
+  <div>
+    <ng-template [ngIf]="!isUserInOrganization">
+      <button nbButton outline status="primary" shape="round" (click)="enterCompany(organization.id)">
+        Вступить
+      </button>
+    </ng-template>
+    <ng-template [ngIf]="isUserInOrganization">
+      <button nbButton outline status="danger" shape="round" (click)="enterCompany(undefined)">
+        Выйти
+      </button>
+    </ng-template>
+  </div>
+</section>
