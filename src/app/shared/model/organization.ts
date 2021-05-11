@@ -5,4 +5,5 @@ export interface Organization {
   name: string;
   type: string;
   users: User[];
+  createdDate: number;
 }
