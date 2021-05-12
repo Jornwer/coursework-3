@@ -14,7 +14,7 @@ import {User} from '../model/user';
 })
 export class AuthService {
 
-  loggedIn: BehaviorSubject<boolean> = new BehaviorSubject(true as boolean);
+  loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private httpClient: HttpClient,
               private localStorage: LocalStorageService) {
