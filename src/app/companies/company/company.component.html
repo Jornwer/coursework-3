@@ -7,13 +7,18 @@
   </div>
   <div>
     <ng-template [ngIf]="!isUserInOrganization">
-      <button nbButton outline status="primary" shape="round" (click)="enterCompany(organization.id)">
+      <button nbButton status="primary" shape="round" (click)="enterCompany(organization.id)">
         Вступить
       </button>
     </ng-template>
     <ng-template [ngIf]="isUserInOrganization">
-      <button nbButton outline status="danger" shape="round" (click)="enterCompany(undefined)">
+      <button nbButton status="danger" shape="round" (click)="enterCompany(undefined)">
         Выйти
+      </button>
+    </ng-template>
+    <ng-template [ngIf]="isAdmin">
+      <button nbButton status="warning" shape="round" routerLink="/company/edit/{{organization.id}}">
+        Редактировать
       </button>
     </ng-template>
   </div>

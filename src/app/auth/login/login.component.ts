@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../shared/auth.service';
+import {AuthService} from '../../shared/service/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {throwError} from 'rxjs';
 import {LoginRequestPayload} from '../../shared/payload/login-request.payload';
-import {UserService} from '../../shared/service/user.sevice';
+import {UserService} from '../../shared/service/user.service';
 
 @Component({
   selector: 'app-login',

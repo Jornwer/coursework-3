@@ -5,7 +5,7 @@ import {serverUrl} from '../server.url';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {UserRequestPayload} from '../payload/user-request.payload';
 import {tap} from 'rxjs/operators';
-import {AuthService} from '../../auth/shared/auth.service';
+import {AuthService} from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -32,9 +32,11 @@ export class UserService {
 
   loadSelf(): void {
     if (this.authService.isLoggedIn()) {
-      this.httpClient.get<User>(serverUrl + 'users/self').subscribe(u => {
-        this.user.next(u);
-      });
+      this.httpClient.get<User>(serverUrl + 'users/self')
+        .pipe(this.authService.updateUsernameAndRole())
+        .subscribe(u => {
+          this.user.next(u);
+        });
     }
   }
 

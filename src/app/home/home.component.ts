@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {AuthService} from '../auth/shared/auth.service';
+import {AuthService} from '../shared/service/auth.service';
 import {defaultUser} from '../shared/model/user';
-import {UserService} from '../shared/service/user.sevice';
+import {UserService} from '../shared/service/user.service';
 
 @Component({
   selector: 'app-home',

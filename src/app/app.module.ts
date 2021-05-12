@@ -26,9 +26,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {TokenInterceptor} from './token-interceptor';
 import { SettingsComponent } from './profile/settings/settings.component';
 import { CompaniesComponent } from './companies/companies.component';
-import { CompanyAdminComponent } from './companies/company-admin/company-admin.component';
-import { CompanyUserComponent } from './companies/company-user/company-user.component';
+import { CompanyComponent } from './companies/company/company.component';
 import { CreateOrganizationComponent } from './create-organization/create-organization.component';
+import { CompanyEditComponent } from './companies/company/company-edit/company-edit.component';
 
 @NgModule({
   declarations: [
@@ -40,9 +40,9 @@ import { CreateOrganizationComponent } from './create-organization/create-organi
     HomeComponent,
     SettingsComponent,
     CompaniesComponent,
-    CompanyAdminComponent,
-    CompanyUserComponent,
-    CreateOrganizationComponent
+    CompanyComponent,
+    CreateOrganizationComponent,
+    CompanyEditComponent
   ],
   imports: [
     BrowserModule,

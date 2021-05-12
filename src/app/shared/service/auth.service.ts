@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, Observable, OperatorFunction} from 'rxjs';
+import {BehaviorSubject, MonoTypeOperatorFunction, Observable, OperatorFunction} from 'rxjs';
 import {LocalStorageService} from 'ngx-webstorage';
-import {AuthResponse} from '../../shared/payload/auth-response.payload';
-import {map} from 'rxjs/operators';
-import {LoginRequestPayload} from '../../shared/payload/login-request.payload';
-import {UserRequestPayload} from '../../shared/payload/user-request.payload';
-import {serverUrl} from '../../shared/server.url';
+import {AuthResponse} from '../payload/auth-response.payload';
+import {map, tap} from 'rxjs/operators';
+import {LoginRequestPayload} from '../payload/login-request.payload';
+import {UserRequestPayload} from '../payload/user-request.payload';
+import {serverUrl} from '../server.url';
+import {User} from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,13 @@ export class AuthService {
   signup(authRequestPayload: UserRequestPayload): Observable<any> {
     return this.httpClient.post<AuthResponse>(serverUrl + 'auth/signup', authRequestPayload)
       .pipe(this.mapUser());
+  }
+
+  updateUsernameAndRole(): MonoTypeOperatorFunction<User> {
+    return tap(user => {
+      this.localStorage.store('username', user.username);
+      this.localStorage.store('role', user.role);
+    });
   }
 
   private mapUser(): OperatorFunction<any, any>  {

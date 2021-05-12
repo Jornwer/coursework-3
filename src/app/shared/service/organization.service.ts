@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {serverUrl} from '../server.url';
 import {OrganizationPayload} from '../payload/organization.payload';
 import {tap} from 'rxjs/operators';
-import {UserService} from './user.sevice';
+import {UserService} from './user.service';
 
 @Injectable({
   providedIn: 'root'

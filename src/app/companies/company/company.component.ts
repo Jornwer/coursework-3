@@ -1,16 +1,17 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {defaultOrganization, Organization} from '../../shared/model/organization';
-import {UserService} from '../../shared/service/user.sevice';
+import {UserService} from '../../shared/service/user.service';
 
 @Component({
-  selector: 'app-company-user',
-  templateUrl: './company-user.component.html',
-  styleUrls: ['./company-user.component.scss']
+  selector: 'app-company',
+  templateUrl: './company.component.html',
+  styleUrls: ['./company.component.scss']
 })
-export class CompanyUserComponent implements OnInit{
+export class CompanyComponent implements OnInit{
 
   @Input() organization: Organization = defaultOrganization;
   isUserInOrganization = false;
+  @Input() isAdmin = false;
 
   constructor(private userService: UserService) {}
 

@@ -5,7 +5,13 @@ section {
   justify-content: space-between;
   p {
     display: block;
-    margin: 0;
+    margin: 3px 5px;
     padding: 0;
   }
+}
+
+button {
+  display: block !important;
+  width: 180px;
+  margin: 5px 5px;
 }

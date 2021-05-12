@@ -1,12 +1,6 @@
 <section class="container">
   <div *ngIf="organizations.length === 0" class="loader"></div>
   <div *ngFor="let organization of organizations">
-    <div *ngIf="isAdmin; then thenBlock else elseBlock"></div>
-    <ng-template #thenBlock>
-      <app-company-admin [organization]="organization"></app-company-admin>
-    </ng-template>
-    <ng-template #elseBlock>
-      <app-company-user [organization]="organization"></app-company-user>
-    </ng-template>
+    <app-company [organization]="organization" [isAdmin]="isAdmin"></app-company>
   </div>
 </section>
