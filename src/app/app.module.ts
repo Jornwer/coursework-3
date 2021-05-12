@@ -28,6 +28,7 @@ import { SettingsComponent } from './profile/settings/settings.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { CompanyAdminComponent } from './companies/company-admin/company-admin.component';
 import { CompanyUserComponent } from './companies/company-user/company-user.component';
+import { CreateOrganizationComponent } from './create-organization/create-organization.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CompanyUserComponent } from './companies/company-user/company-user.comp
     SettingsComponent,
     CompaniesComponent,
     CompanyAdminComponent,
-    CompanyUserComponent
+    CompanyUserComponent,
+    CreateOrganizationComponent
   ],
   imports: [
     BrowserModule,

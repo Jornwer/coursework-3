@@ -1,9 +1,20 @@
 <section class="container">
   <div *ngIf="!isLoggedIn" style="text-align: center">
     <p>Для просмотра списка организаций необходимо выполнить вход</p>
-    <p routerLink="/login" style="color: blue">
+    <button nbButton status="primary" shape="round" routerLink="/login">
       Войти в аккаунт
-    </p>
+    </button>
   </div>
-  <p routerLink="/companies">список компаний</p>
+  <div *ngIf="isLoggedIn">
+    <div *ngIf="!user?.organization?.id" style="text-align: center;">
+      <button nbButton status="primary" shape="round" routerLink="/create-company">
+        Создать компанию
+      </button>
+    </div>
+    <div style="text-align: center;">
+      <button nbButton status="primary" shape="round" routerLink="/companies">
+        Показать список компаний
+      </button>
+    </div>
+  </div>
 </section>

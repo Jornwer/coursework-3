@@ -8,6 +8,7 @@ import {SettingsComponent} from './profile/settings/settings.component';
 import {AuthGuard} from './auth/auth.guard';
 import {UnauthorizedGuard} from './auth/unauthorized.guard';
 import {CompaniesComponent} from './companies/companies.component';
+import {CreateOrganizationComponent} from './create-organization/create-organization.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent, canActivate: [UnauthorizedGuard]},
   {path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard]},
   {path: 'companies', component: CompaniesComponent, canActivate: [AuthGuard]},
-  {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]}
+  {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
+  {path: 'create-company', component: CreateOrganizationComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

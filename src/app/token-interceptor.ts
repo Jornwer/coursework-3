@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {AuthService} from './auth/shared/auth.service';
 import {catchError} from 'rxjs/operators';
@@ -18,8 +18,10 @@ export class TokenInterceptor implements HttpInterceptor {
       return next.handle(this.addToken(req, jwtToken))
         .pipe(
           catchError(error => {
-            this.authService.clearStorage();
-            this.router.navigateByUrl('/login');
+            if (error instanceof HttpErrorResponse && error.status === 403) {
+              this.authService.logout();
+              this.router.navigateByUrl('/login');
+            }
             return throwError(error);
           })
         );
