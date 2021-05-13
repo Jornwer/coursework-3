@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "node server.js",
-    "dev": "ng serve",
+    "dev": "ng build --prod",
     "heroku-postbuild": "ng build --prod"
   },
   "private": true,
@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~11.2.1",
     "@angular/platform-browser-dynamic": "~11.2.1",
     "@angular/router": "~11.2.1",
+    "@angular/service-worker": "~11.2.1",
     "@nebular/eva-icons": "7.0.0",
     "@nebular/theme": "^7.0.0",
     "eva-icons": "^1.1.2",

@@ -29,6 +29,8 @@ import { CompaniesComponent } from './companies/companies.component';
 import { CompanyComponent } from './companies/company/company.component';
 import { CreateOrganizationComponent } from './create-organization/create-organization.component';
 import { CompanyEditComponent } from './companies/company/company-edit/company-edit.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,13 @@ import { CompanyEditComponent } from './companies/company/company-edit/company-e
     NbSidebarModule.forRoot(),
     NbInputModule,
     NbIconModule,
-    NbFormFieldModule
+    NbFormFieldModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
