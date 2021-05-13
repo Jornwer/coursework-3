@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "node server.js",
+    "serve": "ng serve",
     "dev": "ng build --prod",
     "heroku-postbuild": "ng build --prod"
   },

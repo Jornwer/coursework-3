@@ -1,8 +1,6 @@
 <div class="menu">
   <div class="menu-links">
-    <button nbButton outline status="primary" shape="round" routerLink="/" class="normalize">
-      На главную страницу
-    </button>
+    <img src="../../assets/icons/icon-128x128.png" alt="На главную" routerLink="/">
     <div *ngIf="isLoggedIn">
       <div>
         <button (click)="logout()" nbButton status="danger"
