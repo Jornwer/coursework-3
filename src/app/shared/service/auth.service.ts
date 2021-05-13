@@ -29,6 +29,8 @@ export class AuthService {
     return tap(user => {
       this.localStorage.store('username', user.username);
       this.localStorage.store('role', user.role);
+
+      this.loggedIn.next(true);
     });
   }
 

@@ -10,7 +10,7 @@ import {UserService} from '../shared/service/user.service';
 })
 export class HomeComponent{
 
-  isLoggedIn: boolean | undefined;
+  isLoggedIn = false;
   user = defaultUser;
 
   constructor(private authService: AuthService, private userService: UserService) {
