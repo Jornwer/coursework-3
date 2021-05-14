@@ -24,6 +24,12 @@ export class CompaniesComponent implements OnInit{
   ngOnInit(): void {
     this.organizationService.getAllOrganizations().subscribe(data => this.organizations = data);
   }
+
+  changeNumberOfEmployees(): void {
+    this.organizations
+      .filter(org => org.id === this.currentOrganization)
+      .forEach(org => org.employeeCount--);
+  }
 }
 
 

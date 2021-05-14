@@ -7,7 +7,7 @@
   </div>
   <div>
     <ng-template [ngIf]="!isUserInOrganization">
-      <button nbButton status="primary" shape="round" (click)="enterCompany(organization.id)">
+      <button nbButton status="primary" shape="round" (click)="enterCompany(organization.id); enterEmitter.emit()">
         Вступить
       </button>
     </ng-template>

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {defaultOrganization, Organization} from '../../shared/model/organization';
 import {UserService} from '../../shared/service/user.service';
 
@@ -12,6 +12,7 @@ export class CompanyComponent implements OnInit{
   @Input() organization: Organization = defaultOrganization;
   isUserInOrganization = false;
   @Input() isAdmin = false;
+  @Output() enterEmitter = new EventEmitter();
 
   constructor(private userService: UserService) {}
 
@@ -20,6 +21,11 @@ export class CompanyComponent implements OnInit{
   }
 
   enterCompany(id: number | undefined): void {
+    if (id === undefined) {
+      this.organization.employeeCount--;
+    } else {
+      this.organization.employeeCount++;
+    }
     this.userService.changeCompany(id);
   }
 }
