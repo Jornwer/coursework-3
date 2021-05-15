@@ -20,6 +20,9 @@
       <button nbButton status="warning" shape="round" routerLink="/company/edit/{{organization.id}}">
         Редактировать
       </button>
+      <button nbButton status="danger" shape="round" (click)="deleteEmitter.emit(organization.id)">
+        Удалить
+      </button>
     </ng-template>
   </div>
 </section>

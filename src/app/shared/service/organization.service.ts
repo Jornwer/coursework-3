@@ -26,4 +26,16 @@ export class OrganizationService {
         })
       );
   }
+
+  deleteOrganization(id: number): Observable<any> {
+    return this.httpClient.delete(serverUrl + `organizations/${id}`);
+  }
+
+  getOrganizationById(id: number): Observable<Organization> {
+    return this.httpClient.get<Organization>(serverUrl + `organizations/${id}`);
+  }
+
+  changeOrganization(id: number, payload: OrganizationPayload): Observable<Organization> {
+    return this.httpClient.post<Organization>(serverUrl + `organizations/update/${id}`, payload);
+  }
 }

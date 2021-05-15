@@ -1,6 +1,8 @@
 <section class="container">
   <div *ngIf="organizations.length === 0" class="loader"></div>
   <div *ngFor="let organization of organizations">
-    <app-company [organization]="organization" [isAdmin]="isAdmin" (enterEmitter)="changeNumberOfEmployees()"></app-company>
+    <app-company [organization]="organization" [isAdmin]="isAdmin"
+                 (enterEmitter)="changeNumberOfEmployees()" (deleteEmitter)="deleteCompany($event)">
+    </app-company>
   </div>
 </section>

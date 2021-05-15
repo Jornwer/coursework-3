@@ -30,6 +30,14 @@ export class CompaniesComponent implements OnInit{
       .filter(org => org.id === this.currentOrganization)
       .forEach(org => org.employeeCount--);
   }
+
+  deleteCompany(id: number): void {
+    this.organizationService.deleteOrganization(id).subscribe(() => {
+      console.log(id);
+      this.organizations = this.organizations
+        .filter(org => org.id !== id);
+    });
+  }
 }
 
 

@@ -13,6 +13,7 @@ export class CompanyComponent implements OnInit{
   isUserInOrganization = false;
   @Input() isAdmin = false;
   @Output() enterEmitter = new EventEmitter();
+  @Output() deleteEmitter = new EventEmitter<number>();
 
   constructor(private userService: UserService) {}
 
