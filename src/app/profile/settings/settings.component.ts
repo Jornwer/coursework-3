@@ -26,22 +26,13 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void {
     this.userService.user.subscribe(u => this.user = u);
     this.changeForm = new FormGroup({
-      username: new FormControl('', [Validators.required,
-                                                          Validators.minLength(3),
-                                                          Validators.maxLength(32)]),
-      password: new FormControl('', [Validators.required,
-                                                          Validators.minLength(8),
-                                                          Validators.maxLength(32)]),
-      email: new FormControl('', [Validators.required,
-                                                       Validators.maxLength(32),
+      username: new FormControl('', [Validators.pattern('[\\\\w-.]{3,31}')]),
+      password: new FormControl('', [Validators.pattern('[\\\x21-\\\x7E]{8,64')]),
+      email: new FormControl('', [Validators.maxLength(63),
                                                        Validators.minLength(3),
                                                        Validators.email]),
-      firstName: new FormControl('', [Validators.required,
-                                                           Validators.maxLength(32),
-                                                           Validators.minLength(3)]),
-      lastName: new FormControl('', [Validators.required,
-                                                          Validators.maxLength(32),
-                                                          Validators.minLength(3)])
+      firstName: new FormControl('', [Validators.pattern('([A-ZА-Я][a-zа-я]{1,30})')]),
+      lastName: new FormControl('', [Validators.pattern('([A-ZА-Я][a-zа-я]{1,30})')])
     });
   }
 
