@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../shared/service/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -9,11 +9,9 @@ import {UserService} from '../../shared/service/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss', '../shared/auth.styles.scss']
+  styleUrls: ['./login.component.scss', '../shared/auth.styles.scss'],
 })
-export class LoginComponent implements OnInit {
-
-  // @ts-ignore
+export class LoginComponent {
   loginForm: FormGroup;
   authRequestPayload: LoginRequestPayload;
   isError = false;
@@ -22,6 +20,10 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private activatedRoute: ActivatedRoute,
               private router: Router, private userService: UserService) {
     this.isError = false;
+    this.loginForm = new FormGroup({
+      username: new FormControl('', [Validators.pattern('[\\w-.]{3,31}')]),
+      password: new FormControl('', [Validators.pattern('[\\\x21-\\\x7E]{8,64}')])
+    });
     this.authRequestPayload = {
       username: '',
       password: ''
@@ -37,13 +39,6 @@ export class LoginComponent implements OnInit {
 
   toggleShowPassword(): void {
     this.showPassword = !this.showPassword;
-  }
-
-  ngOnInit(): void {
-    this.loginForm = new FormGroup({
-      username: new FormControl('', [Validators.pattern('[\\\\w-.]{3,31}')]),
-      password: new FormControl('', [Validators.pattern('[\\\x21-\\\x7E]{8,64}')])
-    });
   }
 
   login(): void {

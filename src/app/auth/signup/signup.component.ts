@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
       this.router.navigateByUrl('/');
     }
     this.signupForm = new FormGroup({
-      username: new FormControl('', [Validators.pattern('[\\\\w-.]{3,31}')]),
+      username: new FormControl('', [Validators.pattern('[\\w-.]{3,31}')]),
       password: new FormControl('', [Validators.pattern('[\\\x21-\\\x7E]{8,64')]),
       email: new FormControl('', [Validators.maxLength(63),
                                                        Validators.minLength(3),
