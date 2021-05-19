@@ -31,6 +31,8 @@ import { CreateOrganizationComponent } from './create-organization/create-organi
 import { CompanyEditComponent } from './companies/company/company-edit/company-edit.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { UsersPanelComponent } from './admin/users-panel/users-panel.component';
+import { EditUserComponent } from './admin/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { environment } from '../environments/environment';
     CompaniesComponent,
     CompanyComponent,
     CreateOrganizationComponent,
-    CompanyEditComponent
+    CompanyEditComponent,
+    UsersPanelComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

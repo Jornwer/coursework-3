@@ -8,7 +8,7 @@ import {OrganizationPayload} from '../../../shared/payload/organization.payload'
 @Component({
   selector: 'app-company-edit',
   templateUrl: './company-edit.component.html',
-  styleUrls: ['./company-edit.component.scss']
+  styleUrls: ['./company-edit.component.scss', '../../../shared/style/loader.scss']
 })
 export class CompanyEditComponent {
 

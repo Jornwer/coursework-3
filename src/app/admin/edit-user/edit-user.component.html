@@ -1,0 +1,54 @@
+<section>
+  <div *ngIf="!user.id" class="loader"></div>
+  <div *ngIf="user.id" class="form">
+    <div class="head">
+      <p>
+        Изменение аккаунта
+      </p>
+    </div>
+    <form (submit)="submit()" [formGroup]="form">
+      <!--    username-->
+      <input type="text" nbInput fullWidth status="primary" tabindex="1"
+             placeholder="Имя пользователя" [formControlName]="'username'">
+      <span *ngIf="!form.get('username')?.valid && form.get('username')?.touched">
+        Логин должен содержать 3-32 символа
+    </span>
+      <!--    email-->
+      <input type="text" nbInput fullWidth status="primary" tabindex="3"
+             placeholder="Почта" [formControlName]="'email'">
+      <span *ngIf="!form.get('email')?.valid && form.get('email')?.touched">
+        Почта должна быть верной
+    </span>
+      <div class="fullName">
+        <!--    firstName-->
+        <div>
+          <input type="text" nbInput fullWidth status="primary" tabindex="4"
+                 placeholder="Имя" [formControlName]="'firstName'">
+          <span *ngIf="!form.get('firstName')?.valid && form.get('firstName')?.touched">
+          Имя должно содержать 3-32 символа
+        </span>
+        </div>
+        <!--    lastName-->
+        <div>
+          <input type="text" nbInput fullWidth status="primary" tabindex="5"
+                 placeholder="Фамилия" [formControlName]="'lastName'">
+          <span *ngIf="!form.get('lastName')?.valid && form.get('lastName')?.touched">
+            Фамилия должна содержать 3-32 символа
+        </span>
+        </div>
+      </div>
+      <!--    input-->
+      <button type="submit" nbButton hero status="primary" class="btn-submit" tabindex="6"
+              [disabled]="!form.get('username')?.valid ||
+              (form.get('username')?.value === user.username &&
+              form.get('email')?.value === user.email &&
+              form.get('firstName')?.value === user.firstName &&
+              form.get('lastName')?.value === user.lastName)">
+        Изменить
+      </button>
+      <div *ngIf="this.isError">
+        <span>Имя пользователя или почта уже используются</span>
+      </div>
+    </form>
+  </div>
+</section>

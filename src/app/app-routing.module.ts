@@ -11,6 +11,8 @@ import {CompaniesComponent} from './companies/companies.component';
 import {CreateOrganizationComponent} from './create-organization/create-organization.component';
 import {AdminGuard} from './auth/admin.guard';
 import {CompanyEditComponent} from './companies/company/company-edit/company-edit.component';
+import {UsersPanelComponent} from './admin/users-panel/users-panel.component';
+import {EditUserComponent} from './admin/edit-user/edit-user.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -21,7 +23,8 @@ const routes: Routes = [
   {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
   {path: 'create-company', component: CreateOrganizationComponent, canActivate: [AuthGuard]},
   {path: 'company/edit/:id', component: CompanyEditComponent, canActivate: [AdminGuard]},
-
+  {path: 'users', component: UsersPanelComponent, canActivate: [AdminGuard]},
+  {path: 'users/:id', component: EditUserComponent, canActivate: [AdminGuard]},
 
   { path: '**', redirectTo: '/'}
 ];

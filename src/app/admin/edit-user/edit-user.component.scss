@@ -1,0 +1,19 @@
+.fullName {
+  display: flex;
+  justify-content: space-between;
+  div {
+    width: 50%;
+  }
+}
+
+form {
+  text-align: center;
+}
+
+.head {
+  display: flex;
+  justify-content: center;
+  p {
+    margin: 5px 0;
+  }
+}

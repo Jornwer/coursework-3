@@ -53,4 +53,20 @@ export class UserService {
     this.httpClient.post<User>(serverUrl + 'users/update/self', userRequestPayload)
       .subscribe(res => this.user.next(res));
   }
+
+  findAll(): Observable<User[]> {
+    return this.httpClient.get<User[]>(serverUrl + 'users');
+  }
+
+  deleteUser(id: number): Observable<any> {
+    return this.httpClient.delete(serverUrl + `users/${id}`);
+  }
+
+  findUser(id: number): Observable<User> {
+    return this.httpClient.get<User>(serverUrl + `users/${id}`);
+  }
+
+  promoteUser(id: number): Observable<any> {
+    return this.httpClient.post(serverUrl + `users/${id}/promote`, null);
+  }
 }

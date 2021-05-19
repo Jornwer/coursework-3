@@ -36,7 +36,7 @@
         <input type="text" nbInput fullWidth status="primary" tabindex="4"
                placeholder="Имя" [formControlName]="'firstName'">
         <span *ngIf="!signupForm.get('firstName')?.valid && signupForm.get('firstName')?.touched">
-          Имя должен содержать 3-32 символа
+          Имя должно содержать 3-32 символа
         </span>
       </div>
 <!--    lastName-->
@@ -44,7 +44,7 @@
         <input type="text" nbInput fullWidth status="primary" tabindex="5"
                placeholder="Фамилия" [formControlName]="'lastName'">
         <span *ngIf="!signupForm.get('lastName')?.valid && signupForm.get('lastName')?.touched">
-            Фамилия должен содержать 3-32 символа
+            Фамилия должна содержать 3-32 символа
         </span>
       </div>
     </div>
