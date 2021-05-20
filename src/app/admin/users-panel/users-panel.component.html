@@ -7,15 +7,17 @@
       <p>Роль: {{user.role}}</p>
       <p *ngIf="user.organization">Компания: {{user.organization.name}}</p>
     </div>
-    <div *ngIf="user.role === 'USER'">
-      <button nbButton status="danger" shape="round" (click)="deleteUser(user.id)">
-        Удалить
-      </button>
+    <div>
+      <ng-template [ngIf]="user.role === 'USER'">
+        <button nbButton status="danger" shape="round" (click)="deleteUser(user.id)">
+          Удалить
+        </button>
+        <button nbButton status="success" shape="round" (click)="promoteUser(user.id)">
+          Повысить
+        </button>
+      </ng-template>
       <button nbButton status="warning" shape="round" routerLink="/users/{{user.id}}">
         Редактировать
-      </button>
-      <button nbButton status="success" shape="round" (click)="promoteUser(user.id)">
-        Повысить
       </button>
     </div>
   </div>

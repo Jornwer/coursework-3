@@ -30,7 +30,7 @@ export class EditUserComponent {
       username: new FormControl('', [Validators.pattern('[\\w-.]{3,31}'), Validators.required]),
       email: new FormControl('', [Validators.maxLength(63),
                                                        Validators.minLength(3),
-                                                       Validators.email]),
+                                                       Validators.email, Validators.required]),
       firstName: new FormControl('', [Validators.pattern('([A-ZА-Я][a-zа-я]{1,30})'), Validators.required]),
       lastName: new FormControl('', [Validators.pattern('([A-ZА-Я][a-zа-я]{1,30})'), Validators.required])
     });
