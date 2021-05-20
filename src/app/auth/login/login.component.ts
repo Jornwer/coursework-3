@@ -21,8 +21,8 @@ export class LoginComponent {
               private router: Router, private userService: UserService) {
     this.isError = false;
     this.loginForm = new FormGroup({
-      username: new FormControl('', [Validators.pattern('[\\w-.]{3,31}')]),
-      password: new FormControl('', [Validators.pattern('[\\\x21-\\\x7E]{8,64}')])
+      username: new FormControl('', [Validators.pattern('[\\w-.]{3,31}'), Validators.required]),
+      password: new FormControl('', [Validators.pattern('[\\\x21-\\\x7E]{8,64}'), Validators.required])
     });
     this.authRequestPayload = {
       username: '',

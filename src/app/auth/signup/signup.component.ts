@@ -34,13 +34,13 @@ export class SignupComponent implements OnInit {
       this.router.navigateByUrl('/');
     }
     this.signupForm = new FormGroup({
-      username: new FormControl('', [Validators.pattern('[\\w-.]{3,31}')]),
-      password: new FormControl('', [Validators.pattern('[\\\x21-\\\x7E]{8,64')]),
+      username: new FormControl('', [Validators.pattern('[\\w-.]{3,31}'), Validators.required]),
+      password: new FormControl('', [Validators.pattern('[\\\x21-\\\x7E]{8,64'), Validators.required]),
       email: new FormControl('', [Validators.maxLength(63),
                                                        Validators.minLength(3),
                                                        Validators.email]),
-      firstName: new FormControl('', [Validators.pattern('([A-ZА-Я][a-zа-я]{1,30})')]),
-      lastName: new FormControl('', [Validators.pattern('([A-ZА-Я][a-zа-я]{1,30})')])
+      firstName: new FormControl('', [Validators.pattern('([A-ZА-Я][a-zа-я]{1,30})'), Validators.required]),
+      lastName: new FormControl('', [Validators.pattern('([A-ZА-Я][a-zа-я]{1,30})'), Validators.required])
     });
   }
 

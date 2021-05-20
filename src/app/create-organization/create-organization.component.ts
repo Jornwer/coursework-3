@@ -16,8 +16,8 @@ export class CreateOrganizationComponent{
 
   constructor(private organizationService: OrganizationService, private router: Router) {
     this.form = new FormGroup({
-      name: new FormControl('', [Validators.pattern('[a-zA-Zа-яА-Я\\\\s\\\\d]{2,30}')]),
-      type: new FormControl('', [Validators.pattern('[a-zA-Zа-яА-Я\\\\s]{2,30}')])
+      name: new FormControl('', [Validators.pattern('[a-zA-Zа-яА-Я\\s\\d]{2,30}'), Validators.required]),
+      type: new FormControl('', [Validators.pattern('[a-zA-Zа-яА-Я\\s]{2,30}'), Validators.required])
     });
   }
 
