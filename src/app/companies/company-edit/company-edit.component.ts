@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {OrganizationService} from '../../../shared/service/organization.service';
-import {defaultOrganization} from '../../../shared/model/organization';
+import {OrganizationService} from '../../shared/service/organization.service';
+import {defaultOrganization} from '../../shared/model/organization';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {OrganizationPayload} from '../../../shared/payload/organization.payload';
+import {OrganizationPayload} from '../../shared/payload/organization.payload';
 
 @Component({
   selector: 'app-company-edit',
   templateUrl: './company-edit.component.html',
-  styleUrls: ['./company-edit.component.scss', '../../../shared/style/loader.scss']
+  styleUrls: ['./company-edit.component.scss', '../../shared/style/loader.scss']
 })
 export class CompanyEditComponent {
 

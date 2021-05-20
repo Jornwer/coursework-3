@@ -16,6 +16,16 @@
         Показать список компаний
       </button>
     </div>
+    <div>
+      <button nbButton status="primary" shape="round" routerLink="/decisions/create">
+        Создать решение
+      </button>
+    </div>
+    <div>
+      <button nbButton status="primary" shape="round" routerLink="/decisions">
+        Показать свои решения
+      </button>
+    </div>
     <div *ngIf="user.role === 'ADMIN'">
       <button nbButton status="primary" shape="round" routerLink="/users">
         Показать список пользователей

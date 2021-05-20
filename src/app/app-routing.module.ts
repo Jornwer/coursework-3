@@ -8,11 +8,13 @@ import {SettingsComponent} from './profile/settings/settings.component';
 import {AuthGuard} from './auth/auth.guard';
 import {UnauthorizedGuard} from './auth/unauthorized.guard';
 import {CompaniesComponent} from './companies/companies.component';
-import {CreateOrganizationComponent} from './create-organization/create-organization.component';
+import {CreateOrganizationComponent} from './companies/create-organization/create-organization.component';
 import {AdminGuard} from './auth/admin.guard';
-import {CompanyEditComponent} from './companies/company/company-edit/company-edit.component';
+import {CompanyEditComponent} from './companies/company-edit/company-edit.component';
 import {UsersPanelComponent} from './admin/users-panel/users-panel.component';
 import {EditUserComponent} from './admin/edit-user/edit-user.component';
+import {DecisionsComponent} from './decision/decisions/decisions.component';
+import {DecisionCreateComponent} from './decision/decision-create/decision-create.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -25,6 +27,8 @@ const routes: Routes = [
   {path: 'company/edit/:id', component: CompanyEditComponent, canActivate: [AdminGuard]},
   {path: 'users', component: UsersPanelComponent, canActivate: [AdminGuard]},
   {path: 'users/:id', component: EditUserComponent, canActivate: [AdminGuard]},
+  {path: 'decisions', component: DecisionsComponent, canActivate: [AuthGuard]},
+  {path: 'decisions/create', component: DecisionCreateComponent, canActivate: [AuthGuard]},
 
   { path: '**', redirectTo: '/'}
 ];

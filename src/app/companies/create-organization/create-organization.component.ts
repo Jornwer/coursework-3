@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {OrganizationService} from '../shared/service/organization.service';
+import {OrganizationService} from '../../shared/service/organization.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {OrganizationPayload} from '../shared/payload/organization.payload';
+import {OrganizationPayload} from '../../shared/payload/organization.payload';
 import {Router} from '@angular/router';
 
 @Component({

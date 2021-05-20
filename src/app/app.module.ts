@@ -27,12 +27,14 @@ import {TokenInterceptor} from './token-interceptor';
 import { SettingsComponent } from './profile/settings/settings.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { CompanyComponent } from './companies/company/company.component';
-import { CreateOrganizationComponent } from './create-organization/create-organization.component';
-import { CompanyEditComponent } from './companies/company/company-edit/company-edit.component';
+import { CreateOrganizationComponent } from './companies/create-organization/create-organization.component';
+import { CompanyEditComponent } from './companies/company-edit/company-edit.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { UsersPanelComponent } from './admin/users-panel/users-panel.component';
 import { EditUserComponent } from './admin/edit-user/edit-user.component';
+import { DecisionsComponent } from './decision/decisions/decisions.component';
+import { DecisionCreateComponent } from './decision/decision-create/decision-create.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { EditUserComponent } from './admin/edit-user/edit-user.component';
     CreateOrganizationComponent,
     CompanyEditComponent,
     UsersPanelComponent,
-    EditUserComponent
+    EditUserComponent,
+    DecisionsComponent,
+    DecisionCreateComponent
   ],
   imports: [
     BrowserModule,
