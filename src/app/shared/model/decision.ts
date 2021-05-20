@@ -1,13 +1,8 @@
-import {Organization} from './organization';
-import {DecisionRecord} from './decision.record';
+import {User} from './user';
 
 export interface Decision {
   id: number;
+  user: User;
   name: string;
-  description: string;
-  strategyList: string[];
-  records: DecisionRecord[];
-  natureStatesCounter: string;
-  organization: Organization;
-  createdDate: number;
+  data: string;
 }

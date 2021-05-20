@@ -1,1 +1,13 @@
-<p>decisions works!</p>
+<section class="container">
+  <div *ngIf="!loaded" class="loader"></div>
+  <div *ngFor="let decision of decisions" class="decision">
+    <div>
+      <p>Название решения: {{decision.name}}</p>
+    </div>
+    <div class="btn">
+      <button nbButton status="danger" shape="round" (click)="delete(decision.id)">
+        Удалить
+      </button>
+    </div>
+  </div>
+</section>
