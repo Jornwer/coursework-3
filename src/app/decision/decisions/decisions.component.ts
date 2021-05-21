@@ -9,11 +9,12 @@ import {Decision} from '../../shared/model/decision';
 })
 export class DecisionsComponent {
 
-  decisions = new Array<Decision>();
+  decisions: Decision[] = new Array<Decision>();
   loaded = false;
 
   constructor(private decisionService: DecisionService) {
     decisionService.findAll().subscribe(data => {
+      console.log(data);
       this.decisions = data;
       this.loaded = true;
     });
