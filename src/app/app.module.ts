@@ -35,6 +35,8 @@ import { UsersPanelComponent } from './admin/users-panel/users-panel.component';
 import { EditUserComponent } from './admin/edit-user/edit-user.component';
 import { DecisionsComponent } from './decision/decisions/decisions.component';
 import { DecisionCreateComponent } from './decision/decision-create/decision-create.component';
+import { DecisionDisplayComponent } from './decision/decision-display/decision-display.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,8 @@ import { DecisionCreateComponent } from './decision/decision-create/decision-cre
     UsersPanelComponent,
     EditUserComponent,
     DecisionsComponent,
-    DecisionCreateComponent
+    DecisionCreateComponent,
+    DecisionDisplayComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +78,8 @@ import { DecisionCreateComponent } from './decision/decision-create/decision-cre
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    MatTableModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

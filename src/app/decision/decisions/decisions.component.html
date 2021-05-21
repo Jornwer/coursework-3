@@ -8,6 +8,9 @@
       <button nbButton status="danger" shape="round" (click)="delete(decision.id)">
         Удалить
       </button>
+      <button nbButton status="primary" shape="round" routerLink="/decision/{{decision.id}}">
+        Подробнее
+      </button>
     </div>
   </div>
 </section>

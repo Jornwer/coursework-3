@@ -81,6 +81,11 @@ export class DecisionService {
       }));
   }
 
+  findById(id: number): Observable<Decision> {
+    return this.httpClient.get<RawDecision>(serverUrl + `strategic/decisions/${id}`)
+      .pipe(map(raw => this.mapRawDecision(raw)));
+  }
+
   delete(id: number): Observable<any> {
     return this.httpClient.delete(serverUrl + `strategic/decisions/${id}`);
   }

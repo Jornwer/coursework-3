@@ -1,0 +1,55 @@
+<section class="container">
+  <div class="loader" *ngIf="!decision.id"></div>
+  <div *ngIf="decision.id">
+    <p>Название решения: {{decision.name}}</p>
+    <p>Минимальный показатель прибыли: {{decision.minProfit}}</p>
+  </div>
+</section>
+<div *ngIf="decision.id" class="table">
+  <table>
+    <thead>
+      <tr>
+        <th class="first"></th>
+        <ng-template ngFor let-item let-idx="index" [ngForOf]="decision.values[0].sell">
+          <th></th>
+          <th>
+            {{idx + 1}} месяц
+          </th>
+          <th></th>
+        </ng-template>
+      </tr>
+      <tr>
+        <th class="first"></th>
+        <ng-container *ngFor="let i of decision.values[0].sell;">
+          <th *ngFor="let i of decision.values">
+            {{i.name}}
+          </th>
+        </ng-container>
+      </tr>
+    </thead>
+    <tr>
+      <td class="first">Покупка в начале месяца</td>
+      <ng-container *ngFor="let i of decision.values[0].sell; let idx = index">
+        <td *ngFor="let i of decision.values; let idx2 = index">
+          {{decision.values[idx2].buy[idx]}}
+        </td>
+      </ng-container>
+    </tr>
+    <tr>
+      <td class="first">Дивиденды</td>
+      <ng-container *ngFor="let i of decision.values[0].sell; let idx = index">
+        <td *ngFor="let i of decision.values; let idx2 = index">
+          {{decision.values[idx2].div[idx]}}
+        </td>
+      </ng-container>
+    </tr>
+    <tr>
+      <td class="first">Продажа в конце месяца</td>
+      <ng-container *ngFor="let i of decision.values[0].sell; let idx = index">
+        <td *ngFor="let i of decision.values; let idx2 = index">
+          {{decision.values[idx2].sell[idx]}}
+        </td>
+      </ng-container>
+    </tr>
+  </table>
+</div>

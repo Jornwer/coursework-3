@@ -14,3 +14,11 @@ export interface Decision {
   minProfit: number;
   values: Value[];
 }
+
+export const defaultDecision: Decision = {
+  id: 0,
+  user: defaultUser,
+  name: '',
+  minProfit: 0,
+  values: new Array<Value>()
+};

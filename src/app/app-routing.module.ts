@@ -15,6 +15,7 @@ import {UsersPanelComponent} from './admin/users-panel/users-panel.component';
 import {EditUserComponent} from './admin/edit-user/edit-user.component';
 import {DecisionsComponent} from './decision/decisions/decisions.component';
 import {DecisionCreateComponent} from './decision/decision-create/decision-create.component';
+import {DecisionDisplayComponent} from './decision/decision-display/decision-display.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'users/:id', component: EditUserComponent, canActivate: [AdminGuard]},
   {path: 'decisions', component: DecisionsComponent, canActivate: [AuthGuard]},
   {path: 'decisions/create', component: DecisionCreateComponent, canActivate: [AuthGuard]},
+  {path: 'decision/:id', component: DecisionDisplayComponent, canActivate: [AuthGuard]},
 
   { path: '**', redirectTo: '/'}
 ];

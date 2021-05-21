@@ -14,7 +14,6 @@ export class DecisionsComponent {
 
   constructor(private decisionService: DecisionService) {
     decisionService.findAll().subscribe(data => {
-      console.log(data);
       this.decisions = data;
       this.loaded = true;
     });
