@@ -8,6 +8,7 @@ import {LoginRequestPayload} from '../payload/login-request.payload';
 import {UserRequestPayload} from '../payload/user-request.payload';
 import {serverUrl} from '../server.url';
 import {User} from '../model/user';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class AuthService {
 
   loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor(private httpClient: HttpClient,
+  constructor(private httpClient: HttpClient, private router: Router,
               private localStorage: LocalStorageService) {
   }
 
@@ -61,6 +62,7 @@ export class AuthService {
   logout(): void {
     this.clearStorage();
     this.loggedIn.next(false);
+    this.router.navigateByUrl('/');
   }
 
   getUsername(): string {

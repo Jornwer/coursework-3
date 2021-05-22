@@ -1,4 +1,19 @@
 <section>
+  <div *ngIf="!users.length" class="loader"></div>
+  <div *ngIf="users.length" class="buttons">
+    <button nbButton status="danger" shape="round" (click)="sortByUsername()">
+      Сортировать по никнейму
+    </button>
+    <button nbButton status="danger" shape="round" (click)="sortByEmail()">
+      Сортировать по почте
+    </button>
+    <button nbButton status="danger" shape="round" (click)="sortByFullName()">
+      Сортировать по полному имени
+    </button>
+    <button nbButton status="danger" shape="round" (click)="sortByRole()">
+      Сортировать по роли
+    </button>
+  </div>
   <div *ngFor="let user of users" class="user">
     <div>
       <p>Имя пользователя: {{user.username}}</p>

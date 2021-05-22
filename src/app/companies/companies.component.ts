@@ -6,7 +6,7 @@ import {OrganizationService} from '../shared/service/organization.service';
 @Component({
   selector: 'app-companies',
   templateUrl: './companies.component.html',
-  styleUrls: ['./companies.component.scss']
+  styleUrls: ['./companies.component.scss', '../shared/style/loader.scss']
 })
 export class CompaniesComponent implements OnInit{
 
@@ -37,6 +37,22 @@ export class CompaniesComponent implements OnInit{
       this.organizations = this.organizations
         .filter(org => org.id !== id);
     });
+  }
+
+  sortByName(): void {
+    this.organizations.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  sortByType(): void {
+    this.organizations.sort((a, b) => a.type.localeCompare(b.type));
+  }
+
+  sortByEmployees(): void {
+    this.organizations.sort((a, b) => b.employeeCount - a.employeeCount);
+  }
+
+  sortByDate(): void {
+    this.organizations.sort((a, b) => b.createdDate - a.createdDate);
   }
 }
 

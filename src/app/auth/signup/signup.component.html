@@ -50,7 +50,11 @@
     </div>
     <!--    input-->
     <button type="submit" nbButton hero status="primary" class="btn-submit" tabindex="6"
-            [disabled]="!signupForm.get('password')?.valid || !signupForm.get('username')?.valid">
+            [disabled]="!signupForm.get('password')?.valid
+            || !signupForm.get('username')?.valid
+            || !signupForm.get('email')?.valid
+            || !signupForm.get('firstName')?.valid
+            || !signupForm.get('lastName')?.valid">
       Войти в аккаунт
     </button>
     <div *ngIf="this.isError">

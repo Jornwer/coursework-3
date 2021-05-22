@@ -1,5 +1,19 @@
 <section class="ctn">
-  <div *ngIf="organizations.length === 0" class="loader"></div>
+  <div *ngIf="!organizations.length" class="loader"></div>
+  <div *ngIf="organizations.length" class="buttons">
+    <button nbButton status="danger" shape="round" (click)="sortByName()">
+      Сортировать по названию
+    </button>
+    <button nbButton status="danger" shape="round" (click)="sortByType()">
+      Сортировать по типу
+    </button>
+    <button nbButton status="danger" shape="round" (click)="sortByEmployees()">
+      Сортировать по количеству работников
+    </button>
+    <button nbButton status="danger" shape="round" (click)="sortByDate()">
+      Сортировать по дате создания
+    </button>
+  </div>
   <div *ngFor="let organization of organizations">
     <app-company [organization]="organization" [isAdmin]="isAdmin"
                  (enterEmitter)="changeNumberOfEmployees()" (deleteEmitter)="deleteCompany($event)">

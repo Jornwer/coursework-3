@@ -70,7 +70,7 @@ export class DecisionService {
   }
 
   findAll(): Observable<Decision[]> {
-    return this.httpClient.get<RawDecision[]>(serverUrl + 'strategic/decisions')
+    return this.httpClient.get<RawDecision[]>(serverUrl + 'statistic/decisions')
       .pipe(map(raw => {
         const decisions = new Array<Decision>();
         raw.forEach(r => {
@@ -82,11 +82,11 @@ export class DecisionService {
   }
 
   findById(id: number): Observable<Decision> {
-    return this.httpClient.get<RawDecision>(serverUrl + `strategic/decisions/${id}`)
+    return this.httpClient.get<RawDecision>(serverUrl + `statistic/decisions/${id}`)
       .pipe(map(raw => this.mapRawDecision(raw)));
   }
 
   delete(id: number): Observable<any> {
-    return this.httpClient.delete(serverUrl + `strategic/decisions/${id}`);
+    return this.httpClient.delete(serverUrl + `statistic/decisions/${id}`);
   }
 }

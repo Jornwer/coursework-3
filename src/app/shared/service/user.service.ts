@@ -69,4 +69,8 @@ export class UserService {
   promoteUser(id: number): Observable<any> {
     return this.httpClient.post(serverUrl + `users/${id}/promote`, null);
   }
+
+  deleteSelf(): Observable<any> {
+    return this.httpClient.delete(serverUrl + `users/self`);
+  }
 }

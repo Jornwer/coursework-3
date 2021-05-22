@@ -3,6 +3,9 @@
   <div *ngIf="decision.id">
     <p>Название решения: {{decision.name}}</p>
     <p>Минимальный показатель прибыли: {{decision.minProfit}}</p>
+    <p *ngIf="decision.user.organization?.name">
+      {{decision.user.organization?.type}} {{decision.user.organization?.name}}
+    </p>
   </div>
 </section>
 <div *ngIf="decision.id" class="table">
