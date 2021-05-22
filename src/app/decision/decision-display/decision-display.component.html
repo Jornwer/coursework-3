@@ -15,11 +15,15 @@
       <tr>
         <th class="first"></th>
         <ng-template ngFor let-item let-idx="index" [ngForOf]="decision.values[0].sell">
-          <th></th>
+          <ng-template ngFor let-item let-idx="index" [ngForOf]="decision.values[0].sell">
+            <th *ngIf="idx + 1 <= (decision.values.length) / 2"></th>
+          </ng-template>
           <th>
             {{idx + 1}} месяц
           </th>
-          <th></th>
+          <ng-template ngFor let-item let-idx="index" [ngForOf]="decision.values[0].sell">
+            <th *ngIf="idx + 1 <= (decision.values.length - 1) / 2"></th>
+          </ng-template>
         </ng-template>
       </tr>
       <tr>

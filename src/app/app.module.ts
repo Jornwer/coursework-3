@@ -22,7 +22,7 @@ import { UserProfileComponent } from './profile/user-profile/user-profile.compon
 import { HomeComponent } from './home/home.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {NgxWebstorageModule} from 'ngx-webstorage';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TokenInterceptor} from './token-interceptor';
 import { SettingsComponent } from './profile/settings/settings.component';
 import { CompaniesComponent } from './companies/companies.component';
@@ -80,7 +80,8 @@ import {ChartsModule} from 'angular-bootstrap-md';
             registrationStrategy: 'registerWhenStable:30000'
         }),
         ChartsModule,
-        NbToggleModule
+        NbToggleModule,
+        FormsModule
     ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
