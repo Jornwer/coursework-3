@@ -1,4 +1,4 @@
-<section class="container">
+<section class="ctn">
   <div class="loader" *ngIf="!decision.id"></div>
   <div *ngIf="decision.id">
     <p>Название решения: {{decision.name}}</p>
@@ -6,7 +6,8 @@
   </div>
 </section>
 <div *ngIf="decision.id" class="table">
-  <table>
+  <nb-toggle status="primary" [(checked)]="displayTable">Показать таблицу</nb-toggle>
+  <table [hidden]="!displayTable">
     <thead>
       <tr>
         <th class="first"></th>

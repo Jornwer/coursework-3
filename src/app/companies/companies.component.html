@@ -1,4 +1,4 @@
-<section class="container">
+<section class="ctn">
   <div *ngIf="organizations.length === 0" class="loader"></div>
   <div *ngFor="let organization of organizations">
     <app-company [organization]="organization" [isAdmin]="isAdmin"

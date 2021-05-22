@@ -5,14 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  NbThemeModule,
-  NbLayoutModule,
-  NbCardModule,
-  NbButtonModule,
-  NbSidebarModule,
-  NbInputModule,
-  NbIconModule,
-  NbFormFieldModule
+    NbThemeModule,
+    NbLayoutModule,
+    NbCardModule,
+    NbButtonModule,
+    NbSidebarModule,
+    NbInputModule,
+    NbIconModule,
+    NbFormFieldModule, NbToggleModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HeaderComponent } from './header/header.component';
@@ -57,30 +57,31 @@ import {ChartsModule} from 'angular-bootstrap-md';
     DecisionCreateComponent,
     DecisionDisplayComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    NgxWebstorageModule.forRoot(),
-    NbThemeModule.forRoot({name: 'default'}),
-    NbLayoutModule,
-    NbEvaIconsModule,
-    NbCardModule,
-    NbButtonModule,
-    NbSidebarModule.forRoot(),
-    NbInputModule,
-    NbIconModule,
-    NbFormFieldModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
-      // Register the ServiceWorker as soon as the app is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
-    }),
-    ChartsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        NgxWebstorageModule.forRoot(),
+        NbThemeModule.forRoot({name: 'default'}),
+        NbLayoutModule,
+        NbEvaIconsModule,
+        NbCardModule,
+        NbButtonModule,
+        NbSidebarModule.forRoot(),
+        NbInputModule,
+        NbIconModule,
+        NbFormFieldModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: environment.production,
+            // Register the ServiceWorker as soon as the app is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        }),
+        ChartsModule,
+        NbToggleModule
+    ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,

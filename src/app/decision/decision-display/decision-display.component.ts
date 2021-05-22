@@ -29,6 +29,7 @@ export class DecisionDisplayComponent {
       borderWidth: 2,
     }
   ];
+  displayTable = false;
 
   constructor(private activatedRoute: ActivatedRoute, private decisionService: DecisionService) {
     activatedRoute.params
