@@ -17,11 +17,18 @@ export class DecisionDisplayComponent {
   chartType = 'bar';
   chartDatasets: Array<any> = [
     {data: [], label: 'Дисперсия %'}
-    ];
+  ];
   chartLabels: Array<any> = [];
   public chartOptions: any = {
     responsive: true
   };
+  public chartColors: Array<any> = [
+    {
+      backgroundColor: [],
+      borderColor: [],
+      borderWidth: 2,
+    }
+  ];
 
   constructor(private activatedRoute: ActivatedRoute, private decisionService: DecisionService) {
     activatedRoute.params
@@ -57,6 +64,8 @@ export class DecisionDisplayComponent {
     for (let i = 0; i < len; i++) {
       this.chartDatasets[0].data.push(this.disp[i]);
       this.chartLabels.push(this.decision.values[i].name);
+      this.chartColors[0].backgroundColor.push('rgba(153, 102, 255, 0.2)');
+      this.chartColors[0].borderColor.push('rgba(153, 102, 255, 1)');
       if (this.eff[i] >= this.decision.minProfit) {
         arr.push(this.disp[i]);
       } else {
