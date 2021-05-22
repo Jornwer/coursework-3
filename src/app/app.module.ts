@@ -36,7 +36,7 @@ import { EditUserComponent } from './admin/edit-user/edit-user.component';
 import { DecisionsComponent } from './decision/decisions/decisions.component';
 import { DecisionCreateComponent } from './decision/decision-create/decision-create.component';
 import { DecisionDisplayComponent } from './decision/decision-display/decision-display.component';
-import {MatTableModule} from '@angular/material/table';
+import {ChartsModule} from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -79,7 +79,7 @@ import {MatTableModule} from '@angular/material/table';
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    MatTableModule
+    ChartsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

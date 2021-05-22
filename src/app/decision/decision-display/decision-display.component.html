@@ -52,4 +52,23 @@
       </ng-container>
     </tr>
   </table>
+  <p *ngFor="let e of eff; let i = index">Средняя удельная эффективность для {{decision.values[i].name}} <b> : </b> {{e}}</p>
+  <p *ngFor="let e of disp; let i = index">Велиина дисперсии удельной эффективности для {{decision.values[i].name}} <b> : </b> {{e}}</p>
+  <p *ngIf="bestDecision === -1">
+    Ни одно решение не подходит по показателю <b>Средняя удельная эффективность</b>
+  </p>
+  <p *ngIf="bestDecision !== -1">
+    <b>Лучшее решение {{decision.values[bestDecision].name}}</b>
+  </p>
+  <div>
+    <canvas mdbChart
+            [chartType]="chartType"
+            [datasets]="chartDatasets"
+            [labels]="chartLabels"
+            [options]="chartOptions"
+            [legend]="true"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)">
+    </canvas>
+  </div>
 </div>
