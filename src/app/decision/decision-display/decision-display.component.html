@@ -12,31 +12,26 @@
   <nb-toggle status="primary" [(checked)]="displayTable">Показать таблицу</nb-toggle>
   <table [hidden]="!displayTable">
     <thead>
-      <tr>
-        <th class="first"></th>
-        <ng-template ngFor let-item let-idx="index" [ngForOf]="decision.values[0].sell">
-          <ng-template ngFor let-item let-idx="index" [ngForOf]="decision.values[0].sell">
-            <th *ngIf="idx + 1 <= (decision.values.length) / 2"></th>
-          </ng-template>
-          <th>
-            {{idx + 1}} месяц
-          </th>
-          <ng-template ngFor let-item let-idx="index" [ngForOf]="decision.values[0].sell">
-            <th *ngIf="idx + 1 <= (decision.values.length - 1) / 2"></th>
-          </ng-template>
-        </ng-template>
-      </tr>
-      <tr>
-        <th class="first"></th>
-        <ng-container *ngFor="let i of decision.values[0].sell;">
-          <th *ngFor="let i of decision.values">
-            {{i.name}}
-          </th>
-        </ng-container>
-      </tr>
+    <tr>
+      <th></th>
+      <ng-template ngFor let-item let-idx="index" [ngForOf]="decision.values[0].sell">
+        <th [attr.colspan]="decision.values.length">
+          {{idx + 1}} месяц
+        </th>
+      </ng-template>
+    </tr>
+    <tr>
+    <tr>
+      <th></th>
+      <ng-container *ngFor="let i of decision.values[0].sell;">
+        <th *ngFor="let i of decision.values">
+          {{i.name}}
+        </th>
+      </ng-container>
+    </tr>
     </thead>
     <tr>
-      <td class="first">Покупка в начале месяца</td>
+      <td>Покупка в начале месяца</td>
       <ng-container *ngFor="let i of decision.values[0].sell; let idx = index">
         <td *ngFor="let i of decision.values; let idx2 = index">
           {{decision.values[idx2].buy[idx]}}
@@ -44,7 +39,7 @@
       </ng-container>
     </tr>
     <tr>
-      <td class="first">Дивиденды</td>
+      <td>Дивиденды</td>
       <ng-container *ngFor="let i of decision.values[0].sell; let idx = index">
         <td *ngFor="let i of decision.values; let idx2 = index">
           {{decision.values[idx2].div[idx]}}
@@ -52,7 +47,7 @@
       </ng-container>
     </tr>
     <tr>
-      <td class="first">Продажа в конце месяца</td>
+      <td>Продажа в конце месяца</td>
       <ng-container *ngFor="let i of decision.values[0].sell; let idx = index">
         <td *ngFor="let i of decision.values; let idx2 = index">
           {{decision.values[idx2].sell[idx]}}
