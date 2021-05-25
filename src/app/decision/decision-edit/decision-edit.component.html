@@ -1,0 +1,60 @@
+<nb-toggle status="primary" [(checked)]="displayTable">Показать таблицу</nb-toggle>
+<table [hidden]="!displayTable">
+  <thead>
+  <tr>
+    <th></th>
+    <ng-template ngFor let-item let-idx="index" [ngForOf]="decision.values[0].sell">
+      <th [attr.colspan]="decision.values.length">
+        {{idx + 1}} месяц
+      </th>
+    </ng-template>
+  </tr>
+  <tr>
+  <tr>
+    <th></th>
+    <ng-container *ngFor="let i of decision.values[0].sell">
+      <th *ngFor="let i of decision.values">
+        <input type="text" nbInput fullWidth status="primary" [(ngModel)]="i.name">
+      </th>
+    </ng-container>
+  </tr>
+  </thead>
+  <tr>
+    <td>Покупка в начале месяца</td>
+    <ng-container *ngFor="let i of decision.values[0].sell; let idx = index">
+      <td *ngFor="let i of decision.values; let idx2 = index">
+        <input type="text" nbInput fullWidth status="primary" [(ngModel)]="decision.values[idx2].buy[idx]">
+      </td>
+    </ng-container>
+  </tr>
+  <tr>
+    <td>Дивиденды</td>
+    <ng-container *ngFor="let i of decision.values[0].sell; let idx = index">
+      <td *ngFor="let i of decision.values; let idx2 = index">
+        <input type="text" nbInput fullWidth status="primary" [(ngModel)]="decision.values[idx2].div[idx]">
+      </td>
+    </ng-container>
+  </tr>
+  <tr>
+    <td>Продажа в конце месяца</td>
+    <ng-container *ngFor="let i of decision.values[0].sell; let idx = index">
+      <td *ngFor="let i of decision.values; let idx2 = index">
+        <input type="text" nbInput fullWidth status="primary" [(ngModel)]="decision.values[idx2].sell[idx]">
+      </td>
+    </ng-container>
+  </tr>
+</table>
+<input type="text" nbInput status="primary" class="block input"
+       placeholder="Минимальный показатель прибыли" [(ngModel)]="decision.minProfit">
+<input type="text" nbInput status="primary" class="block input"
+       placeholder="Название решения" [(ngModel)]="decision.name">
+<button nbButton status="primary" shape="round" (click)="editDecision()" class="block">
+  Изменить решение
+</button>
+<div *ngIf="isError">
+  <p>Все поля должны быть не пустыми.</p>
+  <p>Поля в таблице решений и минмальный показатель прибыли должны быть числами</p>
+</div>
+<span *ngIf="addError">
+    Имя решения уже используется
+</span>

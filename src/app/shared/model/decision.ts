@@ -7,6 +7,13 @@ export interface Value {
   sell: number[];
 }
 
+export interface DecisionModel {
+  id: number;
+  name: string;
+  data: string;
+  user: User;
+}
+
 export interface Decision {
   id: number;
   user: User;

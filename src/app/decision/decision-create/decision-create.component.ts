@@ -22,7 +22,6 @@ export class DecisionCreateComponent {
   };
   form: FormGroup;
   show = false;
-  names = new Array<string>();
   sell = new Array<string>();
   buy = new Array<string>();
   div = new Array<string>();
@@ -56,7 +55,6 @@ export class DecisionCreateComponent {
         name: ''
       });
     }
-    this.names = new Array<string>(len);
     this.buy = new Array<string>(len * dec);
     this.sell = new Array<string>(len * dec);
     this.div = new Array<string>(len * dec);
@@ -89,8 +87,8 @@ export class DecisionCreateComponent {
         return false;
       }
     }
-    for (const n of this.names) {
-      if (n === '') {
+    for (const v of this.decision.values) {
+      if (v.name === '') {
         return false;
       }
     }

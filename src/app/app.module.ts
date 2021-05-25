@@ -37,6 +37,7 @@ import { DecisionsComponent } from './decision/decisions/decisions.component';
 import { DecisionCreateComponent } from './decision/decision-create/decision-create.component';
 import { DecisionDisplayComponent } from './decision/decision-display/decision-display.component';
 import {ChartsModule} from 'angular-bootstrap-md';
+import { DecisionEditComponent } from './decision/decision-edit/decision-edit.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import {ChartsModule} from 'angular-bootstrap-md';
     EditUserComponent,
     DecisionsComponent,
     DecisionCreateComponent,
-    DecisionDisplayComponent
+    DecisionDisplayComponent,
+    DecisionEditComponent
   ],
     imports: [
         BrowserModule,

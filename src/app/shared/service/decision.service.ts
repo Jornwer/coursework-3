@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {RawDecision} from '../model/rawDecision';
 import {serverUrl} from '../server.url';
 import {map} from 'rxjs/operators';
-import {Decision, Value} from '../model/decision';
+import {Decision, DecisionModel, Value} from '../model/decision';
 import {DecisionPayload} from '../payload/decision.payload';
 import {defaultUser} from '../model/user';
 
@@ -48,11 +48,23 @@ export class DecisionService {
     return decision;
   }
 
-  mapDecision(decision: Decision): DecisionPayload {
-    const raw: DecisionPayload = {
+  mapDecisionToServer(decision: Decision): DecisionModel {
+    return  {
+      id: decision.id,
+      user: decision.user,
       name: decision.name,
-      data: ''
+      data: this.mapData(decision)
     };
+  }
+
+  mapDecision(decision: Decision): DecisionPayload {
+    return  {
+      name: decision.name,
+      data: this.mapData(decision)
+    };
+  }
+
+  private mapData(decision: Decision): string {
     let data: string;
     data = String(decision.minProfit) + ':;';
     decision.values.forEach(value => {
@@ -65,8 +77,7 @@ export class DecisionService {
       }
       data += ';:';
     });
-    raw.data = data.slice(0, data.length - 2);
-    return raw;
+    return data.slice(0, data.length - 2);
   }
 
   findAll(): Observable<Decision[]> {
@@ -75,7 +86,6 @@ export class DecisionService {
         const decisions = new Array<Decision>();
         raw.forEach(r => {
           decisions.push(this.mapRawDecision(r));
-          console.log(this.mapDecision(this.mapRawDecision(r)));
         });
         return decisions;
       }));
@@ -92,5 +102,9 @@ export class DecisionService {
 
   add(decision: Decision): Observable<any> {
     return this.httpClient.post(serverUrl + `statistic/decisions/add`, this.mapDecision(decision));
+  }
+
+  update(decision: Decision): Observable<any> {
+    return this.httpClient.post(serverUrl + `statistic/decisions/update`, this.mapDecisionToServer(decision));
   }
 }
