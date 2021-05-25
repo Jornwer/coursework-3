@@ -5,58 +5,71 @@
            placeholder="Количество месяцев" [formControlName]="'months'">
     <input type="text" nbInput fullWidth status="primary" tabindex="2"
            placeholder="Количество решений" [formControlName]="'decisions'">
-    <input type="text" nbInput fullWidth status="primary" tabindex="3"
-           placeholder="Минимальный показатель прибыли" [formControlName]="'minProfit'">
     <button type="submit" nbButton status="primary" shape="round">
       Сгенерировать таблицу
     </button>
   </form>
+  <span *ngIf="submitError">
+    Введите числа больше 1
+  </span>
 </section>
 <div *ngIf="show" class="table">
   <table>
     <thead>
     <tr>
-      <th class="first"></th>
-      <ng-template ngFor let-item let-idx="index" [ngForOf]="decision.values[0].sell">
-        <th></th>
-        <th>
+      <th></th>
+      <ng-template ngFor let-item let-idx="index" [ngForOf]="decision.values[0].sell" class="month">
+        <th [attr.colspan]="decision.values.length">
           {{idx + 1}} месяц
         </th>
-        <th></th>
       </ng-template>
     </tr>
     <tr>
-      <th class="first"></th>
-      <ng-container *ngFor="let i of decision.values[0].sell;">
-        <th *ngFor="let i of decision.values">
-          {{i.name}}
+    <tr>
+      <th></th>
+      <ng-container *ngFor="let _ of decision.values[0].sell;">
+        <th *ngFor="let _ of decision.values; let i = index">
+          <input type="text" nbInput fullWidth status="primary" [(ngModel)]="decision.values[i].name">
         </th>
       </ng-container>
     </tr>
     </thead>
     <tr>
-      <td class="first">Покупка в начале месяца</td>
-      <ng-container *ngFor="let i of decision.values[0].sell; let idx = index">
-        <td *ngFor="let i of decision.values; let idx2 = index">
-          {{decision.values[idx2].buy[idx]}}
+      <td>Покупка в начале месяца</td>
+      <ng-container *ngFor="let _ of buy; let i = index ; trackBy:trackByFn">
+        <td>
+          <input type="text" nbInput fullWidth status="primary" [(ngModel)]="buy[i]">
         </td>
       </ng-container>
     </tr>
     <tr>
-      <td class="first">Дивиденды</td>
-      <ng-container *ngFor="let i of decision.values[0].sell; let idx = index">
-        <td *ngFor="let i of decision.values; let idx2 = index">
-          {{decision.values[idx2].div[idx]}}
+      <td>Дивиденды</td>
+      <ng-container *ngFor="let _ of div; let i = index ; trackBy:trackByFn">
+        <td>
+          <input type="text" nbInput fullWidth status="primary" [(ngModel)]="div[i]">
         </td>
       </ng-container>
     </tr>
     <tr>
-      <td class="first">Продажа в конце месяца</td>
-      <ng-container *ngFor="let i of decision.values[0].sell; let idx = index">
-        <td *ngFor="let i of decision.values; let idx2 = index">
-          {{decision.values[idx2].sell[idx]}}
+      <td>Продажа в конце месяца</td>
+      <ng-container *ngFor="let _ of sell; let i = index ; trackBy:trackByFn">
+        <td>
+          <input type="text" nbInput fullWidth status="primary" [(ngModel)]="sell[i]">
         </td>
       </ng-container>
     </tr>
   </table>
+  <input type="text" nbInput status="primary" class="block input"
+         placeholder="Минимальный показатель прибыли" [(ngModel)]="minProfit">
+  <input type="text" nbInput status="primary" class="block input"
+         placeholder="Название решения" [(ngModel)]="name">
+  <button nbButton status="primary" shape="round" (click)="makeDecision()" class="block">
+    Создать решение
+  </button>
+  <span *ngIf="isError">
+    Запполните все поля
+  </span>
+  <span *ngIf="addError">
+    Имя решения уже используется
+  </span>
 </div>

@@ -89,4 +89,8 @@ export class DecisionService {
   delete(id: number): Observable<any> {
     return this.httpClient.delete(serverUrl + `statistic/decisions/${id}`);
   }
+
+  add(decision: Decision): Observable<any> {
+    return this.httpClient.post(serverUrl + `statistic/decisions/add`, this.mapDecision(decision));
+  }
 }
