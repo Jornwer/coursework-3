@@ -10,7 +10,7 @@
     </button>
   </form>
   <span *ngIf="submitError">
-    Введите числа больше 1
+    Введите целые числа больше 1 и меньшие 20
   </span>
 </section>
 <div *ngIf="show" class="table">
@@ -59,8 +59,10 @@
       </ng-container>
     </tr>
   </table>
+  <p class="description">Минимальный показатель прибыли</p>
   <input type="text" nbInput status="primary" class="block input"
          placeholder="Минимальный показатель прибыли" [(ngModel)]="minProfit">
+  <p class="description">Название решения</p>
   <input type="text" nbInput status="primary" class="block input"
          placeholder="Название решения" [(ngModel)]="name">
   <button nbButton status="primary" shape="round" (click)="makeDecision()" class="block">

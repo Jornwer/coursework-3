@@ -9,7 +9,7 @@
     <input type="text" nbInput fullWidth status="primary" tabindex="1"
            placeholder="Имя пользователя" [formControlName]="'username'">
     <span *ngIf="!signupForm.get('username')?.valid && signupForm.get('username')?.touched">
-        Логин должен содержать 3-32 символа
+        Логин должен содержать 3-32 символа и содержать буквы латинского алфавита
     </span>
 <!--    password-->
     <nb-form-field>
@@ -22,7 +22,7 @@
       </button>
     </nb-form-field>
     <span *ngIf="!signupForm.get('password')?.valid && signupForm.get('password')?.touched">
-        Пароль должен содержать 8-32 символа
+        Пароль должен содержать 8-64 символа
     </span>
 <!--    email-->
     <input type="text" nbInput fullWidth status="primary" tabindex="3"
@@ -36,7 +36,7 @@
         <input type="text" nbInput fullWidth status="primary" tabindex="4"
                placeholder="Имя" [formControlName]="'firstName'">
         <span *ngIf="!signupForm.get('firstName')?.valid && signupForm.get('firstName')?.touched">
-          Имя должно содержать 3-32 символа
+          Имя должно содержать 3-32 символа и содержать буквы русского или латинского алфавита
         </span>
       </div>
 <!--    lastName-->
@@ -44,7 +44,7 @@
         <input type="text" nbInput fullWidth status="primary" tabindex="5"
                placeholder="Фамилия" [formControlName]="'lastName'">
         <span *ngIf="!signupForm.get('lastName')?.valid && signupForm.get('lastName')?.touched">
-            Фамилия должна содержать 3-32 символа
+            Фамилия должна содержать 3-32 символа и содержать буквы русского или латинского алфавита
         </span>
       </div>
     </div>

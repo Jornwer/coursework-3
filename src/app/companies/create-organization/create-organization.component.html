@@ -8,12 +8,12 @@
     <input type="text" nbInput fullWidth status="primary" tabindex="1"
            placeholder="Название компании" [formControlName]="'name'">
     <span *ngIf="!form.get('name')?.valid && form.get('name')?.touched">
-        Название компании должно содержать 3-32 символа
+        Название компании должно содержать 3-32 символа и содержать буквы русского или латинского алфавита
     </span>
     <input type="text" nbInput fullWidth status="primary" tabindex="2"
            placeholder="Тип компании" [formControlName]="'type'">
     <span *ngIf="!form.get('type')?.valid && form.get('type')?.touched">
-        Тип компании должен содержать 3-32 символа
+        Тип компании должен содержать 3-32 символа и содержать буквы русского или латинского алфавита
     </span>
     <button type="submit" nbButton hero status="primary" class="btn-submit" tabindex="3"
             [disabled]="!form.get('type')?.valid || !form.get('name')?.valid">

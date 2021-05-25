@@ -5,7 +5,7 @@
       <div>
         <button (click)="logout()" nbButton status="danger"
                 shape="round" size="small" class="normalize">
-          Logout
+          Выйти
         </button>
       </div>
       <button nbButton status="warning" shape="round" size="small" routerLink="user-profile" class="normalize">
@@ -14,10 +14,10 @@
     </div>
     <div *ngIf="!isLoggedIn">
       <button nbButton outline status="primary" shape="round" routerLink="/login" class="normalize">
-        Login
+        Войти
       </button>
       <button nbButton status="info" shape="round" routerLink="/signup" class="normalize">
-        Sign up
+        Регистрация
       </button>
     </div>
   </div>

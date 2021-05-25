@@ -64,8 +64,12 @@ export class DecisionCreateComponent {
   checkSubmit(): boolean {
     return isNumeric(this.form.get('months')?.value)
       && isNumeric(this.form.get('decisions')?.value)
+      && Number.isInteger(Number(this.form.get('months')?.value))
+      && Number.isInteger(Number(this.form.get('decisions')?.value))
       && Number(this.form.get('months')?.value) > 1
-      && Number(this.form.get('decisions')?.value) > 1;
+      && Number(this.form.get('decisions')?.value) > 1
+      && Number(this.form.get('months')?.value) < 21
+      && Number(this.form.get('decisions')?.value) < 21;
   }
 
   makeDecision(): void {

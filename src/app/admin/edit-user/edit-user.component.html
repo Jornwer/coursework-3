@@ -11,7 +11,7 @@
       <input type="text" nbInput fullWidth status="primary" tabindex="1"
              placeholder="Имя пользователя" [formControlName]="'username'">
       <span *ngIf="!form.get('username')?.valid && form.get('username')?.touched">
-        Логин должен содержать 3-32 символа
+        Логин должен содержать 3-32 символа и содержать буквы русского алфавита
     </span>
       <!--    email-->
       <input type="text" nbInput fullWidth status="primary" tabindex="3"
@@ -25,7 +25,7 @@
           <input type="text" nbInput fullWidth status="primary" tabindex="4"
                  placeholder="Имя" [formControlName]="'firstName'">
           <span *ngIf="!form.get('firstName')?.valid && form.get('firstName')?.touched">
-          Имя должно содержать 3-32 символа
+          Имя должно содержать 3-32 символа и содержать буквы русского или латинского алфавита
         </span>
         </div>
         <!--    lastName-->
@@ -33,7 +33,7 @@
           <input type="text" nbInput fullWidth status="primary" tabindex="5"
                  placeholder="Фамилия" [formControlName]="'lastName'">
           <span *ngIf="!form.get('lastName')?.valid && form.get('lastName')?.touched">
-            Фамилия должна содержать 3-32 символа
+            Фамилия должна содержать 3-32 символа и содержать буквы русского или латинского алфавита
         </span>
         </div>
       </div>

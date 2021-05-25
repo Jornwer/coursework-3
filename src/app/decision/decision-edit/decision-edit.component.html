@@ -44,8 +44,10 @@
     </ng-container>
   </tr>
 </table>
+<p class="description">Минимальный показатель прибыли</p>
 <input type="text" nbInput status="primary" class="block input"
        placeholder="Минимальный показатель прибыли" [(ngModel)]="decision.minProfit">
+<p class="description">Название решения</p>
 <input type="text" nbInput status="primary" class="block input"
        placeholder="Название решения" [(ngModel)]="decision.name">
 <button nbButton status="primary" shape="round" (click)="editDecision()" class="block">
