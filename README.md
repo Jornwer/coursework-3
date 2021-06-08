@@ -12,3 +12,6 @@ This project is third coursework in BSUIR.
 - MySQL 
 - Json Web Token 
 - Spring Security
+
+**Backend repository:**
+- https://github.com/Nek-12/cw4sem-server
